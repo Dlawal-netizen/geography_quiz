@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farming Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #4CAF50;
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+
+
+        a {
+            font-size: 1.5em; /* Makes the link words bigger */
+            color: #FF5733; /* Initial link color */
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+         a:hover {
+            color: #3375FF; /* Changes the color when hovered */
+            transform: scale(1.1); /* Adds a zoom-in effect */
+        }
+  
+        .answers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .draggable {
+            background: #4CAF50;
+            color: white;
+            padding: 0.5rem;
+            text-align: center;
+            border-radius: 4px;
+            cursor: grab;
+        }
+        .quiz {
+            margin-top: 2rem;
+        }
+        .quiz .question {
+            margin-bottom: 1rem;
+        }
+        .blank {
+            display: inline-block;
+            width: 150px;
+            height: 30px;
+            margin-left: 5px;
+            border: 1px dashed #333;
+            text-align: center;
+            line-height: 30px;
+            background: #f9f9f9;
+        }
+        .blank.dropped {
+            background: #e0f7fa;
+        }
+        footer {
+            text-align: center;
+            background: #333;
+            color: white;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .score {
+            font-size: 1.2rem;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        
+/* Add this CSS for the 'used' class */
+.draggable.used {
+    cursor: not-allowed;
+    background-color: #cccccc;
+    color: #666666;
+    pointer-events: none; /* Prevent interaction */
+    opacity: 0.5;
+}
+#big-button {
+    background-color: #cccccc; /* Light gray background */
+    color: #333; /* Dark text for contrast */
+    font-size: 1rem; /* Slightly smaller font size */
+    font-weight: bold; /* Bold text */
+    padding: 0.5rem 1rem; /* Reduced padding */
+    border: 2px solid #4CAF50; /* Green border */
+    border-radius: 4px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+#big-button:hover {
+    background-color: #bec2be; /* Darker green on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+}
+
+#big-button:active {
+    background-color: #9edba0; /* Even darker green on click */
+    transform: translateY(0); /* Reset lift on click */
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2); /* Reduced shadow */
+}
+  </style>
+</head>
+<body>
+  <header><h1>Plate Tectonics</h1></header>
+
+  <div class="section">
+    <h2>Types of Volcanoes</h2>
+    <ul>
+      <li><strong>Strato-volcanoes (Composite Cone Volcanoes):</strong>
+        <ul>
+          <li><strong>Structure:</strong> Tall, steep-sided, and conical, formed by alternating layers of lava, ash, and volcanic debris.</li>
+          <li><strong>Characteristics:</strong> Explosive eruptions due to viscous magma with high silica content, commonly found near subduction zones.</li>
+          <li><strong>Examples:</strong> Mount Fuji (Japan), Mount St. Helens (USA).</li>
+        </ul>
+      </li>
+      <li><strong>Shield Volcanoes:</strong>
+        <ul>
+          <li><strong>Structure:</strong> Broad and gently sloping, formed by the accumulation of low-viscosity basaltic lava.</li>
+          <li><strong>Characteristics:</strong> Non-explosive eruptions with lava flowing over long distances, common at divergent plate boundaries and hotspots.</li>
+          <li><strong>Examples:</strong> Mauna Loa and Kilauea (Hawaii).</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Features of Volcanoes</h2>
+    <ul>
+      <li><strong>Crater:</strong> A bowl-shaped depression at the top of a volcano, formed by explosive activity or collapse.</li>
+      <li><strong>Vent:</strong> The opening through which magma, gases, and volcanic material are ejected.</li>
+      <li><strong>Magma Chamber:</strong> A reservoir of molten rock beneath the Earth's surface that feeds eruptions.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Features of Earthquakes</h2>
+    <ul>
+      <li><strong>Epicentre:</strong> The point on the Earth's surface directly above the earthquake's origin.</li>
+      <li><strong>Focus (Hypocentre):</strong> The location beneath the Earth's surface where the earthquake begins.</li>
+      <li><strong>Magnitude:</strong> A measure of the energy released during an earthquake, often measured on the Richter scale.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Global Pattern of Plates and Their Structure</h2>
+    <ul>
+      <li>The Earth's lithosphere is divided into tectonic plates that float on the semi-fluid asthenosphere.</li>
+      <li><strong>Plate Movements:</strong>
+        <ul>
+          <li><strong>Constructive/Divergent Boundaries:</strong> Plates move apart, forming new crust and mid-ocean ridges (e.g., Mid-Atlantic Ridge).</li>
+          <li><strong>Destructive/Convergent Boundaries:</strong> Plates move toward each other, leading to subduction, volcanic activity, and mountain formation (e.g., Andes Mountains).</li>
+          <li><strong>Conservative/Transform Boundaries:</strong> Plates slide past one another, causing earthquakes (e.g., San Andreas Fault).</li>
+        </ul>
+      </li>
+      <li><strong>Subduction Zones:</strong> Areas where one plate is forced beneath another, creating trenches, volcanic arcs, and seismic activity.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Effects of Plate Movements</h2>
+    <ul>
+      <li><strong>Constructive Boundaries:</strong> Formation of new crust, mid-ocean ridges, and shield volcanoes.</li>
+      <li><strong>Destructive Boundaries:</strong> Formation of trenches, composite volcanoes, earthquakes, and mountain ranges.</li>
+      <li><strong>Conservative Boundaries:</strong> Frequent earthquakes due to the friction of sliding plates.</li>
+    </ul>
+  </div>
+  <section>
+    <h1>Comparison of Earthquake Effects in MEDCs and LEDCs</h1>
+
+    <h2>Comparison of Effects</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Aspect</th>
+          <th>MEDCs</th>
+          <th>LEDCs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Infrastructure Damage</strong></td>
+          <td>Advanced infrastructure built to withstand earthquakes often limits damage. However, older structures may still collapse.</td>
+          <td>Poorly constructed buildings and infrastructure are highly vulnerable, leading to widespread destruction.</td>
+        </tr>
+        <tr>
+          <td><strong>Loss of Life</strong></td>
+          <td>Fewer casualties due to better emergency response systems, earthquake-resistant designs, and advanced technology.</td>
+          <td>High death tolls due to poorly built homes, lack of emergency plans, and slower rescue efforts.</td>
+        </tr>
+        <tr>
+          <td><strong>Economic Impact</strong></td>
+          <td>Higher monetary losses due to expensive infrastructure, but the economy usually recovers faster.</td>
+          <td>Severe economic setbacks, as recovery is slower and resources for rebuilding are limited.</td>
+        </tr>
+        <tr>
+          <td><strong>Healthcare Systems</strong></td>
+          <td>Well-equipped healthcare systems can handle injuries more effectively, reducing fatalities.</td>
+          <td>Overburdened or underfunded healthcare systems struggle to provide adequate care.</td>
+        </tr>
+        <tr>
+          <td><strong>Emergency Response</strong></td>
+          <td>Quick and efficient emergency services minimize loss of life and damage.</td>
+          <td>Limited resources and delayed responses exacerbate the situation.</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <h1>Comparison of How MEDCs and LEDCs Cope with Earthquakes</h1>
+
+  <h2>How They Cope</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Strategies</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>MEDCs</strong></td>
+        <td>
+          <ul>
+            <li>Invest in earthquake-resistant infrastructure, using advanced materials and designs.</li>
+            <li>Conduct regular earthquake drills and educate the public on safety measures.</li>
+            <li>Have robust emergency response systems with well-trained personnel and advanced technology.</li>
+            <li>Use insurance to cover reconstruction costs and mitigate economic losses.</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>LEDCs</strong></td>
+        <td>
+          <ul>
+            <li>Often rely on international aid and support for disaster relief and rebuilding efforts.</li>
+            <li>Implement community-based disaster management programs to raise awareness and preparedness.</li>
+            <li>Gradually adopt earthquake-resistant building techniques, though progress is slow due to limited resources.</li>
+            <li>Focus on strengthening early warning systems and evacuation plans as funding allows.</li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h1>Benefits of Living Near Volcanoes and Hazardous Areas</h1>
+
+  <h2>Some Benefits of Living Near Volcanoes</h2>
+  <ul>
+    <li><strong>Fertile Soil:</strong> Volcanic ash enriches soil with nutrients, making it ideal for agriculture.</li>
+    <li><strong>Geothermal Energy:</strong> Volcanic areas often provide a sustainable source of geothermal energy.</li>
+    <li><strong>Tourism Opportunities:</strong> Volcanoes attract tourists, boosting the local economy.</li>
+    <li><strong>Mineral Resources:</strong> Volcanoes can produce valuable minerals like sulfur, gold, and diamonds.</li>
+    <li><strong>Cultural and Historical Significance:</strong> Many volcanic regions hold cultural and religious importance for local communities.</li>
+  </ul>
+
+  <h2> Some Other Reasons People Live in Hazardous Areas</h2>
+  <ul>
+    <li><strong>Economic Opportunities:</strong> Fertile land, mining, or tourism can make hazardous areas attractive.</li>
+    <li><strong>Family and Tradition:</strong> People may have deep cultural or ancestral ties to the area.</li>
+    <li><strong>Lack of Alternatives:</strong> Limited resources may prevent relocation to safer areas.</li>
+    <li><strong>Ignorance of Risks:</strong> People may underestimate the risks or believe they won't be affected.</li>
+    <li><strong>Infrastructure:</strong> Developed infrastructure in hazardous areas often outweighs the risk for many.</li>
+  </ul>
+
+  <h2>Case Studies</h2>
+
+  <div class="case-study">
+    <h3>Case Study 1: MEDC - Mount St. Helens, USA (1980 Eruption)</h3>
+    <ul>
+      <li><strong>Impact:</strong> The eruption destroyed 250 homes, 47 bridges, and caused massive damage to forestry and infrastructure. 57 people died.</li>
+      <li><strong>Response:</strong> The USA's advanced emergency response systems evacuated many people before the eruption, limiting the death toll.</li>
+      <li><strong>Rebuilding:</strong> The government invested heavily in rebuilding infrastructure, restoring the affected areas, and studying volcanic behavior.</li>
+      <li><strong>Preparedness:</strong> Long-term monitoring systems were established to provide better warnings of future eruptions.</li>
+    </ul>
+  </div>
+
+  <div class="case-study">
+    <h3>Case Study 2: LEDC - Mount Nyiragongo, Democratic Republic of Congo (2002 Eruption)</h3>
+    <ul>
+      <li><strong>Impact:</strong> The eruption killed 245 people, left 120,000 homeless, and caused extensive damage to the city of Goma.</li>
+      <li><strong>Response:</strong> Limited emergency services struggled to respond effectively. International aid provided food, shelter, and medical support.</li>
+      <li><strong>Challenges:</strong> Poor infrastructure and lack of resources slowed recovery efforts. Many people were forced to return to dangerous areas.</li>
+      <li><strong>Lessons Learned:</strong> Highlighted the need for better disaster management and international support in LEDCs.</li>
+    </ul>
+  </div>
+  </section>
+</body>
+</html>
+<footer><strong> For online lesson call/whatsapp : 234-703-463-258-9/Send email to gametheory242@gmail.com</strong></footer>

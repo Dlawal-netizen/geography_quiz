@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plate Tectonics Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color:#f9f9f9;
+        }
+        header {
+            background: #4CAF50;
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+
+
+        a {
+            font-size: 1.5em; /* Makes the link words bigger */
+            color: #FF5733; /* Initial link color */
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+         a:hover {
+            color: #3375FF; /* Changes the color when hovered */
+            transform: scale(1.1); /* Adds a zoom-in effect */
+        }
+  
+        .answers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .draggable {
+            background: #4CAF50;
+            color: white;
+            padding: 0.5rem;
+            text-align: center;
+            border-radius: 4px;
+            cursor: grab;
+        }
+        .quiz {
+            margin-top: 2rem;
+        }
+        .quiz .question {
+            margin-bottom: 1rem;
+        }
+        .blank {
+            display: inline-block;
+            width: 150px;
+            height: 30px;
+            margin-left: 5px;
+            border: 1px dashed #333;
+            text-align: center;
+            line-height: 30px;
+            background: #f9f9f9;
+        }
+        .blank.dropped {
+            background: #e0f7fa;
+        }
+        footer {
+            text-align: center;
+            background: #333;
+            color: white;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .score {
+            font-size: 1.2rem;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        
+/* Add this CSS for the 'used' class */
+.draggable.used {
+    cursor: not-allowed;
+    background-color: #cccccc;
+    color: #666666;
+    pointer-events: none; /* Prevent interaction */
+    opacity: 0.5;
+}
+#big-button {
+    background-color: #cccccc; /* Light gray background */
+    color: #333; /* Dark text for contrast */
+    font-size: 1rem; /* Slightly smaller font size */
+    font-weight: bold; /* Bold text */
+    padding: 0.5rem 1rem; /* Reduced padding */
+    border: 2px solid #4CAF50; /* Green border */
+    border-radius: 4px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+#big-button:hover {
+    background-color: #bec2be; /* Darker green on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+}
+
+#big-button:active {
+    background-color: #9edba0; /* Even darker green on click */
+    transform: translateY(0); /* Reset lift on click */
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2); /* Reduced shadow */
+}
+
+</style>
+
+    
+</head>
+<body>
+    <header>
+        <h1>Plate Tectonic Quiz</h1>
+        <a href="plate tectonics.html">Read notes</a>
+    </header>
+
+        
+        <p>Drag the correct answers from the box and drop them into the blanks in each question. Click "Submit" to see your score.</p>
+
+        <!-- Answer grid -->
+        <div class="answers-grid" id="answers-grid">
+            <div class="draggable" draggable="true" data-answer="poor sanitation">poor sanitation</div>
+            <div class="draggable" draggable="true" data-answer="shield volcanoe">Shield Volcanoes</div>
+            <div class="draggable" draggable="true" data-answer="oceanic plate">oceanic plate</div> 
+            <div class="draggable" draggable="true" data-answer="Transform">Transform</div>
+            <div class="draggable" draggable="true" data-answer="230,000">230,000</div>
+            <div class="draggable" draggable="true" data-answer="subduction">subduction</div>
+            <div class="draggable" draggable="true" data-answer="Magma">Magma</div>
+            <div class="draggable" draggable="true" data-answer="Volcanoes">Volcanic mountain</div>
+            <div class="draggable" draggable="true" data-answer="weak buildings">Weak buildings</div>
+            <div class="draggable" draggable="true" data-answer="Monitoring">Monitoring</div>
+            <div class="draggable" draggable="true" data-answer="Tsunamis">Tsunamis</div>
+            <div class="draggable" draggable="true" data-answer="Divergent">Divergent</div>
+            <div class="draggable" draggable="true" data-answer="Port-au-Prince">Port-au-Prince</div>
+            <div class="draggable" draggable="true" data-answer="Convergent">Convergent</div>
+            <div class="draggable" draggable="true" data-answer="Inefficent  emergencies">Inefficent emergencies</div>
+            <div class="draggable" draggable="true" data-answer="Collision">Collision</div>
+            <div class="draggable" draggable="true" data-answer="Origin">Origin</div>
+            <div class="draggable" draggable="true" data-answer="mantle">mantle</div>
+            <div class="draggable" draggable="true" data-answer="Tectonic Plates">Tectonic Plates</div>
+            <div class="draggable" draggable="true" data-answer="composite">Stratovolcanoe</div>
+            <div class="draggable" draggable="true" data-answer="Epicentre">Epicentre</div>
+            
+        </div>
+
+        <!-- Quiz questions -->
+                    <!-- Quiz questions -->
+                    <div class="quiz">
+                        <div class="question">
+                            
+                            The movement of <span class="blank" data-correct="Tectonic Plates" ondrop="drop(event)" ondragover="allowDrop(event)"></span> causes earthquakes and volcanic eruptions. A point on the earth surface directly above where the earthquake starts from is 2.<span class="blank" data-correct="Epicentre" ondrop="drop(event)" ondragover="allowDrop(event)"></span>.
+                            
+                             <span class="blank" data-correct="Transform" ondrop="drop(event)" ondragover="allowDrop(event)"></span> or conservative plate boundaries occur when plates slide past each other. <span class="blank" data-correct="Origin" ondrop="drop(event)" ondragover="allowDrop(event)"></span> or focus is a point below the earth suface where earthquake originate.
+                            
+                            Molten rock beneath the Earth's surface is called <span class="blank" data-correct="Magma" ondrop="drop(event)" ondragover="allowDrop(event)"></span>  A <span class="blank" data-correct="Volcanoes" ondrop="drop(event)" ondragover="allowDrop(event)"></span> is a mountain where magma erupts to the surface.
+                            
+                            Large-scale <span class="blank" data-correct="Monitoring" ondrop="drop(event)" ondragover="allowDrop(event)"></span> of activities helps reduce risks.Earthquakes can generate huge sea waves known as <span class="blank" data-correct="Tsunamis" ondrop="drop(event)" ondragover="allowDrop(event)"></span>.
+                            
+                            <span class="blank" data-correct="Collision" ondrop="drop(event)" ondragover="allowDrop(event)"></span> boundaries is where 2 continental plates collide and fold into a fold mountain. 10.<span class="blank" data-correct="Convergent" ondrop="drop(event)" ondragover="allowDrop(event)"></span>boundary is where a continental and oceanic collide, while there is a.<span class="blank" data-correct="subduction" ondrop="drop(event)" ondragover="allowDrop(event)"></span> 
+                            
+                            As the <span class="blank" data-correct="oceanic plate" ondrop="drop(event)" ondragover="allowDrop(event)"></span> goes under where it dips into the <span class="blank" data-correct="mantle" ondrop="drop(event)" ondragover="allowDrop(event)"></span> and melt forming <span class="blank" data-correct="Stratovolcanoes" ondrop="drop(event)" ondragover="allowDrop(event)"></span>.
+                           
+                            <span class="blank" data-correct="Divergent" ondrop="drop(event)" ondragover="allowDrop(event)"></span> boundaries occur when 2 plates separeate from each other creating a space in between which magma rises gently to fill. This type of volcanoe is called <span class="blank" data-correct="shield volcanoe" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
+                           
+                            <span class="blank" data-correct="Port-au-Prince" ondrop="drop(event)" ondragover="allowDrop(event)"></span> is a city in Haiti, where there was a severe earthquake in 2010.
+                           
+                            Over <span class="blank" data-correct="230,000" ondrop="drop(event)" ondragover="allowDrop(event)"></span> people were killed, and 300,000 were injured, these were primary effects. 
+                            
+                            A major secondary hazard or effect was a cholera outbreak affected over 700,000 people due to <span class="blank" data-correct="poor sanitation" ondrop="drop(event)" ondragover="allowDrop(event)"></span>                         
+                           
+                            Haiti as an LEDC has <span class="blank" data-correct="Inefficent emergencies" ondrop="drop(event)" ondragover="allowDrop(event)"></span>  which reduces the chances of many survivors, and <span class="blank" data-correct="weak buildings" ondrop="drop(event)" ondragover="allowDrop(event)"></span> which made made victims get trapped under rubbles
+                        </div>
+
+                    <!-- Additional Quiz Section with Images and Graphs -->
+
+                    <button id = "big-button" onclick="submitQuiz('quiz')">Submit</button>
+                    <p class="score" id="score"></p>   </section>
+                    <div class="overlay" id="overlay"></div>
+                   
+                    <div class="score-modal" id="scoreModal">
+                        <h2>Quiz Results</h2>
+                        <p id="scoreText"></p>
+                       
+                    </div>
+                    </section>
+                    
+                    <script>
+                        function allowDrop(event) {
+                            event.preventDefault();
+                        }
+                        
+                        function dragStart(event) {
+                            event.dataTransfer.setData("text", event.target.dataset.answer);
+                        }
+                        
+                        function drop(event) {
+                            event.preventDefault();
+                            const answer = event.dataTransfer.getData("text");
+                            if (event.target.classList.contains("blank") && !event.target.classList.contains("dropped")) {
+                                event.target.textContent = answer;
+                                event.target.classList.add("dropped");
+                                event.target.dataset.answer = answer;
+                            }
+                        }
+                        
+                        // Enable users to clear their answer by clicking on the blank space
+                        function clearAnswer(event) {
+                            if (event.target.classList.contains("blank") && event.target.classList.contains("dropped")) {
+                                event.target.textContent = "";
+                                event.target.classList.remove("dropped");
+                                delete event.target.dataset.answer;
+                            }
+                        }
+                        
+                        document.querySelectorAll(".blank").forEach(blank => {
+                            blank.addEventListener("click", clearAnswer);
+                        });
+                        
+                        function submitQuiz() {
+                            const blanks = document.querySelectorAll(".blank");
+                            let score = 0;
+                            blanks.forEach(blank => {
+                                if (blank.dataset.answer === blank.dataset.correct) {
+                                    score++;
+                                    blank.style.backgroundColor = "lightgreen";
+                                } else {
+                                    blank.style.backgroundColor = "lightcoral";
+                                    blank.textContent = blank.dataset.correct; // Show missed answers
+                                }
+                            });
+                            document.getElementById("scoreText").textContent = `Your score is ${score} out of ${blanks.length}`;
+                            document.getElementById("overlay").classList.add("show");
+                            document.getElementById("scoreModal").classList.add("show");
+                        }
+                        
+                        function closeModal() {
+                            document.getElementById("overlay").classList.remove("show");
+                            document.getElementById("scoreModal").classList.remove("show");
+                        }
+                        
+                        document.querySelectorAll(".draggable").forEach(item => {
+                            item.addEventListener("dragstart", dragStart);
+                        });
+                    
+                    </script>
+                                                                        
+                </body>
+</html>                
+<footer>
+    <p><strong> For online support call /whatsapp: +234-703-463-258-9/send an email to gametheory242@gmail.com </strong></p>
+</footer>

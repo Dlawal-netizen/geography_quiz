@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coastal Processes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #4CAF50;
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+        .answers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .draggable {
+            background: #4CAF50;
+            color: white;
+            padding: 0.5rem;
+            text-align: center;
+            border-radius: 4px;
+            cursor: grab;
+        }
+        .quiz {
+            margin-top: 2rem;
+        }
+        .quiz .question {
+            margin-bottom: 1rem;
+        }
+        .blank {
+            display: inline-block;
+            width: 150px;
+            height: 30px;
+            margin-left: 5px;
+            border: 1px dashed #333;
+            text-align: center;
+            line-height: 30px;
+            background: #f9f9f9;
+        }
+        .blank.dropped {
+            background: #e0f7fa;
+        }
+        footer {
+            text-align: center;
+            background: #333;
+            color: white;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .score {
+            font-size: 1.2rem;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        a {
+            font-size: 1.5em; /* Makes the link words bigger */
+            color: #FF5733; /* Initial link color */
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+         a:hover {
+            color: #3375FF; /* Changes the color when hovered */
+            transform: scale(1.1); /* Adds a zoom-in effect */
+        }
+  
+        
+
+        
+/* Add this CSS for the 'used' class */
+.draggable.used {
+    cursor: not-allowed;
+    background-color: #cccccc;
+    color: #666666;
+    pointer-events: none; /* Prevent interaction */
+    opacity: 0.5;
+}
+
+
+#big-button {
+    background-color: #cccccc; /* Light gray background */
+    color: #333; /* Dark text for contrast */
+    font-size: 1rem; /* Slightly smaller font size */
+    font-weight: bold; /* Bold text */
+    padding: 0.5rem 1rem; /* Reduced padding */
+    border: 2px solid #4CAF50; /* Green border */
+    border-radius: 4px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+#big-button:hover {
+    background-color: #bec2be; /* Darker green on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+}
+
+#big-button:active {
+    background-color: #9edba0; /* Even darker green on click */
+    transform: translateY(0); /* Reset lift on click */
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2); /* Reduced shadow */
+}
+
+
+
+</style>
+
+    
+</head>
+<body>
+    <header>
+        <h1>Coastal Processes Quiz</h1> <div id="segment"> <a href="Coastal Processes summary.html">Read a summary</a></div>
+
+        
+    </header>
+   
+        
+        <p>Drag the correct answers from the box and drop them into the blanks in each question. Click "Submit" to see your score.</p>
+
+        <!-- Answer grid -->
+        <div class="answers-grid" id="answers-grid">
+            <div class="draggable" draggable="true" data-answer="backwash">backwash</div>
+            <div class="draggable" draggable="true" data-answer="longshore">Longshore drift</div>
+            <div class="draggable" draggable="true" data-answer="cave">Cave</div> 
+            <div class="draggable" draggable="true" data-answer="spit">Spit</div>
+            <div class="draggable" draggable="true" data-answer="Groynes">Groynes</div>
+            <div class="draggable" draggable="true" data-answer="bar">Bar</div>
+            <div class="draggable" draggable="true" data-answer="arch">Arch</div>
+            <div class="draggable" draggable="true" data-answer="Stack">Stack</div>
+            <div class="draggable" draggable="true" data-answer="Lagoon">Lagoon</div>
+            <div class="draggable" draggable="true" data-answer="Headland">Headland</div>
+            <div class="draggable" draggable="true" data-answer="manage retreat">Managed retreat</div>
+            <div class="draggable" draggable="true" data-answer="Stump">Stump</div>
+            <div class="draggable" draggable="true" data-answer="Bay">Bay</div>
+            <div class="draggable" draggable="true" data-answer="salt marsh">salt marsh</div>
+            <div class="draggable" draggable="true" data-answer="Swash">Swash</div>
+            <div class="draggable" draggable="true" data-answer="destructive">Destructive</div>
+            <div class="draggable" draggable="true" data-answer="wave cut platform">Wave-cut platform</div>
+            <div class="draggable" draggable="true" data-answer="sea wall">Sea wall</div>
+            <div class="draggable" draggable="true" data-answer="Wave-cut notch">Wave cut notch</div>
+            <div class="draggable" draggable="true" data-answer="Constructive">Constructive</div>
+            <div class="draggable" draggable="true" data-answer="sand dune">Sand dune</div>
+            <div class="draggable" draggable="true" data-answer="Tombolo">Tombolo</div>
+            <div class="draggable" draggable="true" data-answer="Rip rap">Rip rap</div>        
+            <div class="draggable" draggable="true" data-answer="beach nourishment">beach nourishment</div>
+            <div class="draggable" draggable="true" data-answer="coral reef">Coral reef</div>
+        </div>
+
+        <!-- Quiz questions -->
+                    <!-- Quiz questions -->
+                    <div class="quiz">
+                        <div class="question">
+                           
+                            The movement of sea water up the beach is 1.<span class="blank" data-correct="Swash" ondrop="drop(event)" ondragover="allowDrop(event)"></span> and the water that goes back into the sea is called  2.<span class="blank" data-correct="backwash" ondrop="drop(event)" ondragover="allowDrop(event)"></span>. A weak backwash and a strong swash forms a
+                           
+                            3. <span class="blank" data-correct="Constructive" ondrop="drop(event)" ondragover="allowDrop(event)"></span> waves, while a strong backwash and a weak swash form 4 .<span class="blank" data-correct="destructive" ondrop="drop(event)" ondragover="allowDrop(event)"></span> waves. A destructive waves causes coastal erosion through processes like hydraulic action, abrasion, attrition and solution. 
+                           
+                            features formed through these processes include 5.<span class="blank" data-correct="Bay" ondrop="drop(event)" ondragover="allowDrop(event)"></span> which is an eroded part of coastland due to its weak resistance to the wave action and  6.<span class="blank" data-correct="Headland" ondrop="drop(event)" ondragover="allowDrop(event)"></span> which is the more resistant part of the coastland which lies alternatively to the one eroded earlier.
+                           
+                            It is harder and so get eroded slowly compared to the latter.
+                           
+                            Other features attibuted to destructive waves include :- 7<span class="blank" data-correct="cave" ondrop="drop(event)" ondragover="allowDrop(event)"></span>,  8 <span class="blank" data-correct="arch" ondrop="drop(event)" ondragover="allowDrop(event)"></span>,9 <span class="blank" data-correct="Stack" ondrop="drop(event)" ondragover="allowDrop(event)"></span>, and 10<span class="blank" data-correct="Stump" ondrop="drop(event)" ondragover="allowDrop(event)"></span> in that order of formation 
+                           
+                            When the base of a cliff or headland get eroded by the sea water as the water keeps hitting it, it forms 11.<span class="blank" data-correct="Wave-cut notch" ondrop="drop(event)" ondragover="allowDrop(event)"></span>.
+                           
+                            This continues to get deepened that the the upper part of the cliff collapse since the bottom is weak with little to no support. This then creates  a 12.<span class="blank" data-correct="wave cut platform" ondrop="drop(event)" ondragover="allowDrop(event)"></span> 
+                           
+                            Constructive waves on the other hand create beach and other features mainly by deposition of sediments which have been moved in a zig-zag manner through the coastline in a process called 13.<span class="blank" data-correct="longshore" ondrop="drop(event)" ondragover="allowDrop(event)"></span>. 
+                           
+                            The first is 14.<span class="blank" data-correct="spit" ondrop="drop(event)" ondragover="allowDrop(event)"></span> which is a stretch of the sand materials into the water at a point where there is bend.  
+                           
+                            15.<span class="blank" data-correct="bar" ondrop="drop(event)" ondragover="allowDrop(event)"></span> is formed when the projected sand covers a bay by extending across 2 successive headlands,there is a trapped water behind it which is called 16.<span class="blank" data-correct="Lagoon" ondrop="drop(event)" ondragover="allowDrop(event)"></span> that could become dry and marshy formimg a 17<span class="blank" data-correct="salt marsh" ondrop="drop(event)" ondragover="allowDrop(event)"></span>.
+                           
+                            18.<span class="blank" data-correct="sand dune" ondrop="drop(event)" ondragover="allowDrop(event)"></span> is formed as more sands are deposited on it. 19<span class="blank" data-correct="Tombolo" ondrop="drop(event)" ondragover="allowDrop(event)"></span> is when a spit connects a mainland to an island.
+                           
+                            There are different ways of managing the destructive effects of the wave:-20.<span class="blank" data-correct="sea wall" ondrop="drop(event)" ondragover="allowDrop(event)"></span> is a constructed concrete structure to absolve the the energy of the wave, it is quite effective but can be very expensive.
+                           
+                            Another is 21.<span class="blank" data-correct="Groynes" ondrop="drop(event)" ondragover="allowDrop(event)"></span> which is a wooden structure built along the coastline and most effective to curb longshore drift. These 2 and others like rip rap and gambions are hard engineering methods of coastal management.  
+                           
+                            The soft engineering methods include:- 22 <span class="blank" data-correct="beach nourishment" ondrop="drop(event)" ondragover="allowDrop(event)"></span> which is filling the coast area with sand to replace the eroded one and 23 <span class="blank" data-correct="manage retreat" ondrop="drop(event)" ondragover="allowDrop(event)"></span> which involves intentionally moving infrastructure, settlements, or defenses further inland to create space for coastal ecosystems to function naturally.                     </div>
+                           
+                            The soft engineering methods generally boost tourism by retaining ecosystem and a could be cheaper in comparison to hard engineering.However they can be less effective to combact high wave energy.
+
+                            <!-- Additional Quiz Section with Images and Graphs -->
+
+                            <button id = "big-button" onclick="submitQuiz('quiz')">Submit</button>
+                            <p class="score" id="score"></p>   </section>
+                            <div class="overlay" id="overlay"></div>
+                           
+                            <div class="score-modal" id="scoreModal">
+                                <h2>Quiz Results</h2>
+                                <p id="scoreText"></p>
+                                
+                            </div>
+                            </section>
+                        
+                            <script>
+                                function allowDrop(event) {
+                                    event.preventDefault();
+                                }
+                                
+                                function dragStart(event) {
+                                    event.dataTransfer.setData("text", event.target.dataset.answer);
+                                }
+                                
+                                function drop(event) {
+                                    event.preventDefault();
+                                    const answer = event.dataTransfer.getData("text");
+                                    if (event.target.classList.contains("blank") && !event.target.classList.contains("dropped")) {
+                                        event.target.textContent = answer;
+                                        event.target.classList.add("dropped");
+                                        event.target.dataset.answer = answer;
+                                    }
+                                }
+                                
+                                // Enable users to clear their answer by clicking on the blank space
+                                function clearAnswer(event) {
+                                    if (event.target.classList.contains("blank") && event.target.classList.contains("dropped")) {
+                                        event.target.textContent = "";
+                                        event.target.classList.remove("dropped");
+                                        delete event.target.dataset.answer;
+                                    }
+                                }
+                                
+                                document.querySelectorAll(".blank").forEach(blank => {
+                                    blank.addEventListener("click", clearAnswer);
+                                });
+                                
+                                function submitQuiz() {
+                                    const blanks = document.querySelectorAll(".blank");
+                                    let score = 0;
+                                    blanks.forEach(blank => {
+                                        if (blank.dataset.answer === blank.dataset.correct) {
+                                            score++;
+                                            blank.style.backgroundColor = "lightgreen";
+                                        } else {
+                                            blank.style.backgroundColor = "lightcoral";
+                                            blank.textContent = blank.dataset.correct; // Show missed answers
+                                        }
+                                    });
+                                    document.getElementById("scoreText").textContent = `Your score is ${score} out of ${blanks.length}`;
+                                    document.getElementById("overlay").classList.add("show");
+                                    document.getElementById("scoreModal").classList.add("show");
+                                }
+                                
+                                function closeModal() {
+                                    document.getElementById("overlay").classList.remove("show");
+                                    document.getElementById("scoreModal").classList.remove("show");
+                                }
+                                
+                                document.querySelectorAll(".draggable").forEach(item => {
+                                    item.addEventListener("dragstart", dragStart);
+                                });
+                            
+                            </script>
+                              </body>
+                        </html>
+                        <footer>
+                            <p><strong>For online support call/whatsapp +234-703-463-258-9/send an email to gametheory242@gmail.com </strong> </p>
+                        </footer>
+                        
+                        

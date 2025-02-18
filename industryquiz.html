@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industry Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #4CAF50;
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+
+
+        a {
+            font-size: 1.5em; /* Makes the link words bigger */
+            color: #FF5733; /* Initial link color */
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+         a:hover {
+            color: #3375FF; /* Changes the color when hovered */
+            transform: scale(1.1); /* Adds a zoom-in effect */
+        }
+  
+        .answers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .draggable {
+            background: #4CAF50;
+            color: white;
+            padding: 0.5rem;
+            text-align: center;
+            border-radius: 4px;
+            cursor: grab;
+        }
+        .quiz {
+            margin-top: 2rem;
+        }
+        .quiz .question {
+            margin-bottom: 1rem;
+        }
+        .blank {
+            display: inline-block;
+            width: 150px;
+            height: 30px;
+            margin-left: 5px;
+            border: 1px dashed #333;
+            text-align: center;
+            line-height: 30px;
+            background: #f9f9f9;
+        }
+        .blank.dropped {
+            background: #e0f7fa;
+        }
+        footer {
+            text-align: center;
+            background: #333;
+            color: white;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .score {
+            font-size: 1.2rem;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        
+/* Add this CSS for the 'used' class */
+.draggable.used {
+    cursor: not-allowed;
+    background-color: #cccccc;
+    color: #666666;
+    pointer-events: none; /* Prevent interaction */
+    opacity: 0.5;
+}
+#big-button {
+    background-color: #cccccc; /* Light gray background */
+    color: #333; /* Dark text for contrast */
+    font-size: 1rem; /* Slightly smaller font size */
+    font-weight: bold; /* Bold text */
+    padding: 0.5rem 1rem; /* Reduced padding */
+    border: 2px solid #4CAF50; /* Green border */
+    border-radius: 14px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+#big-button:hover {
+    background-color: #bec2be; /* Darker green on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+}
+
+#big-button:active {
+    background-color: #9edba0; /* Even darker green on click */
+    transform: translateY(0); /* Reset lift on click */
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2); /* Reduced shadow */
+}
+
+</style>
+
+    
+</head>
+<body>
+    <header>
+        <h1>Industry</h1>
+        <a href="industry.html">Read notes</a>
+    </header>
+
+        
+        <p><strong> the correct answers from the box and drop them into the blanks in each question. Click "Submit" to see your score.</strong></p>
+
+        <!-- Answer grid -->
+        <div class="answers-grid" id="answers-grid">
+            <div class="draggable" draggable="true" data-answer="raw materials">raw materials</div>
+            <div class="draggable" draggable="true" data-answer="processes">processes</div>
+            <div class="draggable" draggable="true" data-answer="Transport">Transport</div>
+            <div class="draggable" draggable="true" data-answer="high technology">high technology</div> 
+            <div class="draggable" draggable="true" data-answer="Government policies">Government policies</div>
+            <div class="draggable" draggable="true" data-answer="Air pollution">Air pollution</div>
+            <div class="draggable" draggable="true" data-answer="Consumer proximity">Consumer promixity</div>
+            <div class="draggable" draggable="true" data-answer="Industrialization">Industrialization</div>
+            <div class="draggable" draggable="true" data-answer="industrial location">industrial location</div>
+            <div class="draggable" draggable="true" data-answer="local environment">local environments</div>
+            <div class="draggable" draggable="true" data-answer="educated workforce">educated workforce</div>
+            <div class="draggable" draggable="true" data-answer="skill labor">skill labour</div>
+            <div class="draggable" draggable="true" data-answer="local market">local market</div>
+            <div class="draggable" draggable="true" data-answer="outputs">outputs</div>
+            <div class="draggable" draggable="true" data-answer="ice cap melting">Ice cap melting</div>
+            <div class="draggable" draggable="true" data-answer="inputs">inputs</div>
+            
+            
+            
+        </div>
+
+        <!-- Quiz questions -->
+                    <!-- Quiz questions -->
+                    <div class="quiz">
+                        <div class="question">
+                            
+                            An industrial system is a complex arrangement of components that interact to convert <span class="blank" data-correct="inputs" ondrop="drop(event)" ondragover="allowDrop(event)"></span> (resources) into <span class="blank" data-correct="outputs" ondrop="drop(event)" ondragover="allowDrop(event)"></span> (products and waste). The three key components of an industrial system are inputs, processes, and outputs.
+
+                            The input stage includes <span class="blank" data-correct="raw materials" ondrop="drop(event)" ondragover="allowDrop(event)"></span>, energy resources, labour, capital, and land. <span class="blank" data-correct="Processes" ondrop="drop(event)" ondragover="allowDrop(event)"></span> refers to the transformation of raw materials into consumable or usable products, such as food processing. 
+                            
+                            The <span class="blank" data-correct="high technology" ondrop="drop(event)" ondragover="allowDrop(event)"></span> industry relies on advanced technology and innovation, including biotechnology and aerospace.
+
+                            Labour factors in industrial location include availability, cost, and demographics. Fuel and power supply reliability affects <span class="blank" data-correct="industrial location" ondrop="drop(event)" ondragover="allowDrop(event)"></span>, and industries may prefer sites near power plants or energy hubs to reduce costs. <span class="blank" data-correct="Transport" ondrop="drop(event)" ondragover="allowDrop(event)"></span> refers to the accessibility of an industry by road, rail, sea, or air to facilitate distribution.
+                            
+                            <span class="blank" data-correct="Consumer proximity" ondrop="drop(event)" ondragover="allowDrop(event)"></span> is an important factor in industrial location since being near <span class="blank" data-correct="large market" ondrop="drop(event)" ondragover="allowDrop(event)"></span> helps reduce distribution costs. <span class="blank" data-correct="Government policies" ondrop="drop(event)" ondragover="allowDrop(event)"></span>, such as tax breaks and subsidies, can attract industries to certain locations.
+
+                            Small-scale production involves small, local markets or niche products, while large-scale production requires access to extensive raw materials and efficient transport. Centralized production means that manufacturing occurs in a single, large factory, whereas decentralized production involves multiple, smaller factories. Industrial zones often feature planned development, meaning they are pre-planned areas designated for industrial activity.
+
+                            Waste management is a crucial part of industrial processes to prevent environmental issues such as water pollution and biodiversity loss. <span class="blank" data-correct="Air pollution" ondrop="drop(event)" ondragover="allowDrop(event)"></span> from factories contributes to global warming, increasing greenhouse gas emissions globally. Deforestation due to <span class="blank" data-correct="Industrialization" ondrop="drop(event)" ondragover="allowDrop(event)"></span> reduces biodiversity and alters rainfall patterns. 
+                            
+                            Industrial waste contaminates <span class="blank" data-correct="local environments" ondrop="drop(event)" ondragover="allowDrop(event)"></span> such as rivers and land, leading to soil pollution.
+
+                            A car manufacturing plant is often located near raw material sources, <span class="blank" data-correct="skill labor" ondrop="drop(event)" ondragover="allowDrop(event)"></span> pools, and strong transport links. A high technology park requires a highly <span class="blank" data-correct="educated workforce" ondrop="drop(event)" ondragover="allowDrop(event)"></span>, modern facilities, and supportive political policies. Global temperature rise, <span class="blank" data-correct="ice cap melting" ondrop="drop(event)" ondragover="allowDrop(event)"></span>, and sea level rise are effects of climate change caused by industrial activities.
+                            <!-- Additional Quiz Section with Images and Graphs -->
+
+                            <button id = "big-button" onclick="submitQuiz('quiz')">Submit</button>
+                            <p class="score" id="score"></p>   </section>
+                            <div class="overlay" id="overlay"></div>
+                           
+                            <div class="score-modal" id="scoreModal">
+                                <h2>Quiz Results</h2>
+                                <p id="scoreText"></p>
+                              
+                            </div>
+                           
+            
+                            <script>
+                                function allowDrop(event) {
+                                    event.preventDefault();
+                                }
+                                
+                                function dragStart(event) {
+                                    event.dataTransfer.setData("text", event.target.dataset.answer);
+                                }
+                                
+                                function drop(event) {
+                                    event.preventDefault();
+                                    const answer = event.dataTransfer.getData("text");
+                                    if (event.target.classList.contains("blank") && !event.target.classList.contains("dropped")) {
+                                        event.target.textContent = answer;
+                                        event.target.classList.add("dropped");
+                                        event.target.dataset.answer = answer;
+                                    }
+                                }
+                                
+                                // Enable users to clear their answer by clicking on the blank space
+                                function clearAnswer(event) {
+                                    if (event.target.classList.contains("blank") && event.target.classList.contains("dropped")) {
+                                        event.target.textContent = "";
+                                        event.target.classList.remove("dropped");
+                                        delete event.target.dataset.answer;
+                                    }
+                                }
+                                
+                                document.querySelectorAll(".blank").forEach(blank => {
+                                    blank.addEventListener("click", clearAnswer);
+                                });
+                                
+                                function submitQuiz() {
+                                    const blanks = document.querySelectorAll(".blank");
+                                    let score = 0;
+                                    blanks.forEach(blank => {
+                                        if (blank.dataset.answer === blank.dataset.correct) {
+                                            score++;
+                                            blank.style.backgroundColor = "lightgreen";
+                                        } else {
+                                            blank.style.backgroundColor = "lightcoral";
+                                            blank.textContent = blank.dataset.correct; // Show missed answers
+                                        }
+                                    });
+                                    document.getElementById("scoreText").textContent = `Your score is ${score} out of ${blanks.length}`;
+                                    document.getElementById("overlay").classList.add("show");
+                                    document.getElementById("scoreModal").classList.add("show");
+                                }
+                                
+                                function closeModal() {
+                                    document.getElementById("overlay").classList.remove("show");
+                                    document.getElementById("scoreModal").classList.remove("show");
+                                }
+                                
+                                document.querySelectorAll(".draggable").forEach(item => {
+                                    item.addEventListener("dragstart", dragStart);
+                                });
+                            
+                            </script>
+                            
+                                    
+                
+            </body>
+</html>
+<footer>
+    <p><strong>For online support call/whatsapp +234-703-463-258-9/send an email to gametheory242@gmail.com </strong></p>
+</footer>

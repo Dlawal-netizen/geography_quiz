@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farming Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #4CAF50;
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+
+
+        a {
+            font-size: 1.5em; /* Makes the link words bigger */
+            color: #FF5733; /* Initial link color */
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+         a:hover {
+            color: #3375FF; /* Changes the color when hovered */
+            transform: scale(1.1); /* Adds a zoom-in effect */
+        }
+  
+        .answers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .draggable {
+            background: #4CAF50;
+            color: white;
+            padding: 0.5rem;
+            text-align: center;
+            border-radius: 4px;
+            cursor: grab;
+        }
+        .quiz {
+            margin-top: 2rem;
+        }
+        .quiz .question {
+            margin-bottom: 1rem;
+        }
+        .blank {
+            display: inline-block;
+            width: 150px;
+            height: 30px;
+            margin-left: 5px;
+            border: 1px dashed #333;
+            text-align: center;
+            line-height: 30px;
+            background: #f9f9f9;
+        }
+        .blank.dropped {
+            background: #e0f7fa;
+        }
+        footer {
+            text-align: center;
+            background: #333;
+            color: white;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .score {
+            font-size: 1.2rem;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        
+/* Add this CSS for the 'used' class */
+.draggable.used {
+    cursor: not-allowed;
+    background-color: #cccccc;
+    color: #666666;
+    pointer-events: none; /* Prevent interaction */
+    opacity: 0.5;
+}
+#big-button {
+    background-color: #cccccc; /* Light gray background */
+    color: #333; /* Dark text for contrast */
+    font-size: 1rem; /* Slightly smaller font size */
+    font-weight: bold; /* Bold text */
+    padding: 0.5rem 1rem; /* Reduced padding */
+    border: 2px solid #4CAF50; /* Green border */
+    border-radius: 14px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+#big-button:hover {
+    background-color: #bec2be; /* Darker green on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+}
+
+#big-button:active {
+    background-color: #9edba0; /* Even darker green on click */
+    transform: translateY(0); /* Reset lift on click */
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2); /* Reduced shadow */
+}
+
+</style>
+
+    
+</head>
+<body>
+    <header>
+        <h1>Weather and climate</h1>
+        <a href="weather and climate summary.html">Read notes</a>
+    </header>
+
+        
+        <p><strong> the correct answers from the box and drop them into the blanks in each question. Click "Submit" to see your score.</strong></p>
+
+        <!-- Answer grid -->
+        <div class="answers-grid" id="answers-grid">
+            <div class="draggable" draggable="true" data-answer="thermometer"> Thermometer </div>
+            <div class="draggable" draggable="true" data-answer="Sunshine recorder">Sunshine recorder</div>
+            <div class="draggable" draggable="true" data-answer="frontal rainfall">Frontal rainfall</div>
+            <div class="draggable" draggable="true" data-answer="climate">Climate</div> 
+            <div class="draggable" draggable="true" data-answer="barometer">Barometer</div>
+            <div class="draggable" draggable="true" data-answer="Cirrus">Cirrus</div>
+            <div class="draggable" draggable="true" data-answer="Convectional rainfall">Convectional rainfall</div>
+            <div class="draggable" draggable="true" data-answer="anemometer">Anemometer</div>
+            <div class="draggable" draggable="true" data-answer="tropical desert">tropical desert</div>
+            <div class="draggable" draggable="true" data-answer="rain gauge">Rain gauge</div>
+            <div class="draggable" draggable="true" data-answer="Humidity">Hygrometer</div>
+            <div class="draggable" draggable="true" data-answer="rain shadow">Rain shadow</div>
+            <div class="draggable" draggable="true" data-answer="stratus">Stratus</div>
+            <div class="draggable" draggable="true" data-answer="stevenson screen">Stevenson Screen</div>
+            <div class="draggable" draggable="true" data-answer="wind vane">Wind vane</div>
+            <div class="draggable" draggable="true" data-answer="atmosphere">Atmosphere</div>
+            <div class="draggable" draggable="true" data-answer="relief rainfall">Orographic rainfall</div>
+            <div class="draggable" draggable="true" data-answer="tropical rain forest">Tropical rain forest</div>
+            <div class="draggable" draggable="true" data-answer="cumulus">Cumulus</div>
+            <div class="draggable" draggable="true" data-answer="weather">weather</div>
+            
+        </div>
+
+        <!-- Quiz questions -->
+                    <!-- Quiz questions -->
+                    <div class="quiz">
+                        <div class="question">
+                            
+                            <span class="blank" data-correct="atmosphere" ondrop="drop(event)" ondragover="allowDrop(event)"></span> is the layer of gases surrounding the Earth that protects it and supports life. The term <span class="blank" data-correct="weather" ondrop="drop(event)" ondragover="allowDrop(event)"></span> refers to the day-to-day atmospheric conditions such as temperature, precipitation, and wind. 
+                            
+                            <span class="blank" data-correct="climate" ondrop="drop(event)" ondragover="allowDrop(event)"></span> refers to the average weather conditions of a place over a long period, typically 30 years. The <span class="blank" data-correct="barometer" ondrop="drop(event)" ondragover="allowDrop(event)"></span> is a device used to measure atmospheric pressure.
+                            
+                            <span class="blank" data-correct="thermometer" ondrop="drop(event)" ondragover="allowDrop(event)"></span>measures the temperature of the air in degrees Celsius or Fahrenheit.
+                            
+                            <span class="blank" data-correct="rain gauge" ondrop="drop(event)" ondragover="allowDrop(event)"></span> is a graduated cylinder collects rainwater and measures the depth in millimeters,placed in an open area, away from buildings and trees, to prevent interference.
+                            
+                            <span class="blank" data-correct="anemometer" ondrop="drop(event)" ondragover="allowDrop(event)"></span> are rotating cups that measure the speed of the wind in kilometers or miles per hour. It is positioned in an open area, on a mast or pole, to avoid obstructions.
+                            
+                            <span class="blank" data-correct="wind vane" ondrop="drop(event)" ondragover="allowDrop(event)"></span> is a rotating arrow points in the direction from which the wind is blown. It is placed on rooftops or open spaces to ensure accuracy.
+                            
+                            <span class="blank" data-correct="Humidity" ondrop="drop(event)" ondragover="allowDrop(event)"></span>Measures the amount of water vapor in the air, expressed as a percentage.
+                            
+                            Campbell-Stokes is used to measure <span class="blank" data-correct="Sunshine recorder" ondrop="drop(event)" ondragover="allowDrop(event)"></span>; a glass sphere focuses sunlight onto a strip of card, burning a trace.
+                            
+                            Thermometer, hygrometer are kept in <span class="blank" data-correct="stevenson screen" ondrop="drop(event)" ondragover="allowDrop(event)"></span> which is wooden,painted white to reflect heat, raised 1.2 meters above the ground to prevent heat being absolved from the it and louvred to allow for proper ventilation.  
+                            
+                            Hot and wet all year, no distinct seasons, over 2000mm of rain annually, high and consistent temperature,dense, layered vegetation with tall trees with poor soil due to leaching are all attribute of <span class="blank" data-correct="tropical rain forest" ondrop="drop(event)" ondragover="allowDrop(event)"></span> ,..
+                            
+                            However, hot during the day, cold at night, very dry, less than 250mm annually with wide diurnal range (up to 50°C difference), Sparse, with scattered shrubs and cacti,nutrient-poor, often saline or sandy are all attribute of <span class="blank" data-correct="tropical desert" ondrop="drop(event)" ondragover="allowDrop(event)"></span>..
+                            
+                            <span class="blank" data-correct="frontal rainfall" ondrop="drop(event)" ondragover="allowDrop(event)"></span> is when warm and cold air masses meet, with warm air mass rising,causing condensation and eventual precipitation. <span class="blank" data-correct="Convectional rainfall" ondrop="drop(event)" ondragover="allowDrop(event)"></span> on the other hand is when evaporation,condesation
+                            
+                            and precipitation takes place; quite common in the equatorial regions. <span class="blank" data-correct="relief rainfall" ondrop="drop(event)" ondragover="allowDrop(event)"></span> is when warm air mass rises from a lowland to mountainous regions where condesation and precipitation takes place.
+                            
+                            <span class="blank" data-correct="rain shadow" ondrop="drop(event)" ondragover="allowDrop(event)"></span> is formed when the air mass that forms the relief rainfall at the windward side of the mountain blows to the leeward side as cold current which lacks lots of moisture and then forms desert. 
+                            
+                            <span class="blank" data-correct="Cirrus" ondrop="drop(event)" ondragover="allowDrop(event)"></span>clouds are thin, wispy, and found at high altitudes
+                            
+                            <span class="blank" data-correct="stratus" ondrop="drop(event)" ondragover="allowDrop(event)"></span> cloud is a type of cloud typically forms in layers and can cover the entire sky like a blanket
+                            
+                            <span class="blank" data-correct="cumulus" ondrop="drop(event)" ondragover="allowDrop(event)"></span>clouds are usually flat on the bottom and puffy on top, resembling cotton balls.
+                            
+                            <!-- Additional Quiz Section with Images and Graphs -->
+
+                            <button id = "big-button" onclick="submitQuiz('quiz')">Submit</button>
+                            <p class="score" id="score"></p>   </section>
+                            <div class="overlay" id="overlay"></div>
+                           
+                            <div class="score-modal" id="scoreModal">
+                                <h2>Quiz Results</h2>
+                                <p id="scoreText"></p>
+                              
+                            </div>
+                           
+            
+                            <script>
+                                function allowDrop(event) {
+                                    event.preventDefault();
+                                }
+                                
+                                function dragStart(event) {
+                                    event.dataTransfer.setData("text", event.target.dataset.answer);
+                                }
+                                
+                                function drop(event) {
+                                    event.preventDefault();
+                                    const answer = event.dataTransfer.getData("text");
+                                    if (event.target.classList.contains("blank") && !event.target.classList.contains("dropped")) {
+                                        event.target.textContent = answer;
+                                        event.target.classList.add("dropped");
+                                        event.target.dataset.answer = answer;
+                                    }
+                                }
+                                
+                                // Enable users to clear their answer by clicking on the blank space
+                                function clearAnswer(event) {
+                                    if (event.target.classList.contains("blank") && event.target.classList.contains("dropped")) {
+                                        event.target.textContent = "";
+                                        event.target.classList.remove("dropped");
+                                        delete event.target.dataset.answer;
+                                    }
+                                }
+                                
+                                document.querySelectorAll(".blank").forEach(blank => {
+                                    blank.addEventListener("click", clearAnswer);
+                                });
+                                
+                                function submitQuiz() {
+                                    const blanks = document.querySelectorAll(".blank");
+                                    let score = 0;
+                                    blanks.forEach(blank => {
+                                        if (blank.dataset.answer === blank.dataset.correct) {
+                                            score++;
+                                            blank.style.backgroundColor = "lightgreen";
+                                        } else {
+                                            blank.style.backgroundColor = "lightcoral";
+                                            blank.textContent = blank.dataset.correct; // Show missed answers
+                                        }
+                                    });
+                                    document.getElementById("scoreText").textContent = `Your score is ${score} out of ${blanks.length}`;
+                                    document.getElementById("overlay").classList.add("show");
+                                    document.getElementById("scoreModal").classList.add("show");
+                                }
+                                
+                                function closeModal() {
+                                    document.getElementById("overlay").classList.remove("show");
+                                    document.getElementById("scoreModal").classList.remove("show");
+                                }
+                                
+                                document.querySelectorAll(".draggable").forEach(item => {
+                                    item.addEventListener("dragstart", dragStart);
+                                });
+                            
+                            </script>
+                           <script>
+                            function allowDrop(event) {
+                                event.preventDefault();
+                            }
+                            
+                            function dragStart(event) {
+                                event.dataTransfer.setData("text", event.target.dataset.answer);
+                            }
+                            
+                            function drop(event) {
+                                event.preventDefault();
+                                const answer = event.dataTransfer.getData("text");
+                                if (event.target.classList.contains("blank") && !event.target.classList.contains("dropped")) {
+                                    event.target.textContent = answer;
+                                    event.target.classList.add("dropped");
+                                    event.target.dataset.answer = answer;
+                                }
+                            }
+                            
+                            // Enable users to clear their answer by clicking on the blank space
+                            function clearAnswer(event) {
+                                if (event.target.classList.contains("blank") && event.target.classList.contains("dropped")) {
+                                    event.target.textContent = "";
+                                    event.target.classList.remove("dropped");
+                                    delete event.target.dataset.answer;
+                                }
+                            }
+                            
+                            document.querySelectorAll(".blank").forEach(blank => {
+                                blank.addEventListener("click", clearAnswer);
+                            });
+                            
+                            function submitQuiz() {
+                                const blanks = document.querySelectorAll(".blank");
+                                let score = 0;
+                                blanks.forEach(blank => {
+                                    if (blank.dataset.answer === blank.dataset.correct) {
+                                        score++;
+                                        blank.style.backgroundColor = "lightgreen";
+                                    } else {
+                                        blank.style.backgroundColor = "lightcoral";
+                                        blank.textContent = blank.dataset.correct; // Show missed answers
+                                    }
+                                });
+                                document.getElementById("scoreText").textContent = `Your score is ${score} out of ${blanks.length}`;
+                                document.getElementById("overlay").classList.add("show");
+                                document.getElementById("scoreModal").classList.add("show");
+                            }
+                            
+                            function closeModal() {
+                                document.getElementById("overlay").classList.remove("show");
+                                document.getElementById("scoreModal").classList.remove("show");
+                            }
+                            
+                            document.querySelectorAll(".draggable").forEach(item => {
+                                item.addEventListener("dragstart", dragStart);
+                            });
+                        
+                        </script>
+                                                 
+                
+            </body>
+</html>
+<footer>
+    <p><strong>For online support call/whatsapp +234-703-463-258-9/send an email to gametheory242@gmail.com </strong></p>
+</footer>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Population Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #4CAF50;
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+        nav {
+            background: #f4f4f4;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-around;
+        }
+        nav a {
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        section {
+            padding: 2rem;
+        }
+        .answers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .draggable {
+            background: #4CAF50;
+            color: white;
+            padding: 0.5rem;
+            text-align: center;
+            border-radius: 4px;
+            cursor: grab;
+        }
+        .quiz {
+            margin-top: 2rem;
+        }
+        .quiz .question {
+            margin-bottom: 1rem;
+        }
+        .blank {
+            display: inline-block;
+            width: 150px;
+            height: 30px;
+            margin-left: 5px;
+            border: 1px dashed #333;
+            text-align: center;
+            line-height: 30px;
+            background: #f9f9f9;
+        }
+        .blank.dropped {
+            background: #e0f7fa;
+        }
+        footer {
+            text-align: center;
+            background: #333;
+            color: white;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .score {
+            font-size: 1.2rem;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        #segment{
+            color: #4CAF50;
+        }
+
+        #big-button {
+    background-color: #cccccc; /* Light gray background */
+    color: #333; /* Dark text for contrast */
+    font-size: 1rem; /* Slightly smaller font size */
+    font-weight: bold; /* Bold text */
+    padding: 0.5rem 1rem; /* Reduced padding */
+    border: 2px solid #4CAF50; /* Green border */
+    border-radius: 4px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+#big-button:hover {
+    background-color: #bec2be; /* Darker green on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+}
+
+#big-button:active {
+    background-color: #9edba0; /* Even darker green on click */
+    transform: translateY(0); /* Reset lift on click */
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2); /* Reduced shadow */
+}
+</style>
+
+    
+</head>
+<body>
+    <header>
+        <h1>Population Dynamics</h1><a href="Population Dynamics Summary.html">Read a summary</a></div>
+    </header>
+
+        
+        <p>Drag the correct answers from the box and drop them into the blanks in each question. Click "Submit" to see your score.</p>
+
+        <!-- Answer grid -->
+        <div class="answers-grid" id="answers-grid">
+            <div class="draggable" draggable="true" data-answer="infant mortality rate "> infant mortality rate </div>
+            <div class="draggable" draggable="true" data-answer="youthful">youthful</div>
+            <div class="draggable" draggable="true" data-answer="female infanticide">Female infanticide  </div>
+            <div class="draggable" draggable="true" data-answer="ageing">ageing</div> 
+            <div class="draggable" draggable="true" data-answer="deforestation">Deforestation</div>
+            <div class="draggable" draggable="true" data-answer="air pollution">Air pollution</div>
+            <div class="draggable" draggable="true" data-answer="gender preference">gender preference</div>
+            <div class="draggable" draggable="true" data-answer="population">population</div>
+            <div class="draggable" draggable="true" data-answer="elderly">elderly</div>
+            <div class="draggable" draggable="true" data-answer="reduce">reduce</div>
+            <div class="draggable" draggable="true" data-answer="population growth">population growth</div>
+           
+            <div class="draggable" draggable="true" data-answer="increase">increase</div>
+            <div class="draggable" draggable="true" data-answer="balanced diet">balanced diet</div>
+            <div class="draggable" draggable="true" data-answer="underpopulation">Underpopulation</div>
+            <div class="draggable" draggable="true" data-answer="improved nutrition">improved nutrition </div>
+            <div class="draggable" draggable="true" data-answer="Overpopulation">Overpopulation</div>
+            <div class="draggable" draggable="true" data-answer="china">China</div>
+            <div class="draggable" draggable="true" data-answer="fertility rate">Fertility rate</div>
+            <div class="draggable" draggable="true" data-answer="cultural shift">cultural shift</div>
+            <div class="draggable" draggable="true" data-answer="high">high</div>
+            <div class="draggable" draggable="true" data-answer="natural increase">natural increase</div>
+            <div class="draggable" draggable="true" data-answer="Rural-urban">Rural-urban</div>
+            
+        </div>
+
+        <!-- Quiz questions -->
+                    <!-- Quiz questions -->
+                    <div class="quiz">
+                        <div class="question">
+                             
+                            The total number of people living in a specific area is referred to as the <span class="blank" data-correct="population" ondrop="drop(event)" ondragover="allowDrop(event)"></span>. The <span class="blank" data-correct="fertility rate" ondrop="drop(event)" ondragover="allowDrop(event)"></span> measures the average number of children born to a woman during her lifetime. 
+                            
+                            <span class="blank" data-correct="Rural-urban" ondrop="drop(event)" ondragover="allowDrop(event)"></span> migration occurs when people move from rural areas to urban areas. A <span class="blank" data-correct="Overpopulation" ondrop="drop(event)" ondragover="allowDrop(event)"></span>is the population is one that exceeds the resources available in an area. 
+                            
+                            The <span class="blank" data-correct="infant mortality" ondrop="drop(event)" ondragover="allowDrop(event)"></span> rate measures the number of deaths of infants under one year per 1,000 live births.
+
+                            <span class="blank" data-correct="natural increase" ondrop="drop(event)" ondragover="allowDrop(event)"></span> occurs when the birth rate exceeds the death rate. In the demographic transition model, Stage 4 is the stage where both birth and death rates are low.Natural increase is calculated as birth rate minus death rate.
+
+                            High birth is caused by reasons that include:- early marriage, low knowldge in the use of contraceptives, and <span class="blank" data-correct="gender preference" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
+           
+                            Low birth rate on the other hand is associated with, women becoming more educated and career minded, more knowldge of contraceptives and <span class="blank" data-correct="cultural shift " ondrop="drop(event)" ondragover="allowDrop(event)"></span> towards smaller families. 
+  
+                            High death rate is associated with wars, disease and epidemics, lack of clean water and <span class="blank" data-correct="balanced diet" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
+
+                            Low death rate on the other hand is associated with factors that include better health care, more access to clean water, and<span class="blank" data-correct="improved nutrition" ondrop="drop(event)" ondragover="allowDrop(event)"></span> 
+                            
+                            A population pyramid with a wide base and narrow top indicates a <span class="blank" data-correct="youthful" ondrop="drop(event)" ondragover="allowDrop(event)"></span> population which is typical of LEDC pyramid; while a narrower base , wider middle and top represents <span class="blank" data-correct="ageing" ondrop="drop(event)" ondragover="allowDrop(event)"></span> population which is typical of MEDC.
+                           
+                            An ageing population occurs when the proportion of<span class="blank" data-correct="elderly" ondrop="drop(event)" ondragover="allowDrop(event)"></span> people in a country increases. A <span class="blank" data-correct="high" ondrop="drop(event)" ondragover="allowDrop(event)"></span> dependency ratio suggests a greater economic burden on the working-age population. Countries with high birth rates often have a high dependency ratio, as many children depend on adults.
+
+                             <span class="blank" data-correct="underpopulation" ondrop="drop(event)" ondragover="allowDrop(event)"></span>is a condition where there are too few people to utilize resources effectively to the capacity of the environment to sustain a population with its resources.
+
+                            In <span class="blank" data-correct="china" ondrop="drop(event)" ondragover="allowDrop(event)"></span>a one-child policy was implemented to control population growth. Couples were told to have only one child,minority farmers and couples whose child were disabled were exempted.
+                            
+                            The policy eliminated over  400 million births in its over 35 years of existence, with government raising money to fix many decaying infrastuctures and other necessities. 
+                            
+                            However, gender imbalance, <span class="blank" data-correct="female infanticide" ondrop="drop(event)" ondragover="allowDrop(event)"></span> and abadonment as well as ageing population were some of the negatives of the policy
+                            
+                            Pro-natalist policies aim to <span class="blank" data-correct="increase" ondrop="drop(event)" ondragover="allowDrop(event)"></span> birth rates, while anti-natalist policies aim to<span class="blank" data-correct="reduce" ondrop="drop(event)" ondragover="allowDrop(event)"></span>them.
+                            
+                            Financial incentives are often used to encourage families to have more children in countries with low birth rates. Free education is provided to encourage higher birth rates. campaigns are used to spread awareness about family planning in densely populated countries.
+
+                            Rapid population growth can lead to environmental issues such as <span class="blank" data-correct="deforestation" ondrop="drop(event)" ondragover="allowDrop(event)"></span> and <span class="blank" data-correct="air pollution" ondrop="drop(event)" ondragover="allowDrop(event)"></span>. 
+                            
+                            Sustainable population management aims to balance <span class="blank" data-correct="population growth" ondrop="drop(event)" ondragover="allowDrop(event)"></span> with environmental conservation. 
+                            
+                            <!-- Additional Quiz Section with Images and Graphs -->
+
+                            <button id = "big-button" onclick="submitQuiz('quiz')">Submit</button>
+                            <p class="score" id="score"></p>   </section>
+                            <div class="overlay" id="overlay"></div>
+                           
+                            <div class="score-modal" id="scoreModal">
+                                <h2>Quiz Results</h2>
+                                <p id="scoreText"></p>
+                              
+                            </div>
+                           
+            
+                            <script>
+                                function allowDrop(event) {
+                                    event.preventDefault();
+                                }
+                                
+                                function dragStart(event) {
+                                    event.dataTransfer.setData("text", event.target.dataset.answer);
+                                }
+                                
+                                function drop(event) {
+                                    event.preventDefault();
+                                    const answer = event.dataTransfer.getData("text");
+                                    if (event.target.classList.contains("blank") && !event.target.classList.contains("dropped")) {
+                                        event.target.textContent = answer;
+                                        event.target.classList.add("dropped");
+                                        event.target.dataset.answer = answer;
+                                    }
+                                }
+                                
+                                // Enable users to clear their answer by clicking on the blank space
+                                function clearAnswer(event) {
+                                    if (event.target.classList.contains("blank") && event.target.classList.contains("dropped")) {
+                                        event.target.textContent = "";
+                                        event.target.classList.remove("dropped");
+                                        delete event.target.dataset.answer;
+                                    }
+                                }
+                                
+                                document.querySelectorAll(".blank").forEach(blank => {
+                                    blank.addEventListener("click", clearAnswer);
+                                });
+                                
+                                function submitQuiz() {
+                                    const blanks = document.querySelectorAll(".blank");
+                                    let score = 0;
+                                    blanks.forEach(blank => {
+                                        if (blank.dataset.answer === blank.dataset.correct) {
+                                            score++;
+                                            blank.style.backgroundColor = "lightgreen";
+                                        } else {
+                                            blank.style.backgroundColor = "lightcoral";
+                                            blank.textContent = blank.dataset.correct; // Show missed answers
+                                        }
+                                    });
+                                    document.getElementById("scoreText").textContent = `Your score is ${score} out of ${blanks.length}`;
+                                    document.getElementById("overlay").classList.add("show");
+                                    document.getElementById("scoreModal").classList.add("show");
+                                }
+                                
+                                function closeModal() {
+                                    document.getElementById("overlay").classList.remove("show");
+                                    document.getElementById("scoreModal").classList.remove("show");
+                                }
+                                
+                                document.querySelectorAll(".draggable").forEach(item => {
+                                    item.addEventListener("dragstart", dragStart);
+                                });
+                            
+                            </script>
+                                           
+    
+</body>
+</html>
+<footer>
+    <p><strong> online support call/whatsapp: +234-703-463-258-9/send an email to gametheory242@gmail.com </strong> </p>
+</footer>
+
+                                    
+                

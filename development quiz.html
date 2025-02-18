@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Development Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #4CAF50;
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+
+
+        a {
+            font-size: 1.5em; /* Makes the link words bigger */
+            color: #FF5733; /* Initial link color */
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+         a:hover {
+            color: #3375FF; /* Changes the color when hovered */
+            transform: scale(1.1); /* Adds a zoom-in effect */
+        }
+  
+        .answers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .draggable {
+            background: #4CAF50;
+            color: white;
+            padding: 0.5rem;
+            text-align: center;
+            border-radius: 4px;
+            cursor: grab;
+        }
+        .quiz {
+            margin-top: 2rem;
+        }
+        .quiz .question {
+            margin-bottom: 1rem;
+        }
+        .blank {
+            display: inline-block;
+            width: 150px;
+            height: 30px;
+            margin-left: 5px;
+            border: 1px dashed #333;
+            text-align: center;
+            line-height: 30px;
+            background: #f9f9f9;
+        }
+        .blank.dropped {
+            background: #e0f7fa;
+        }
+        footer {
+            text-align: center;
+            background: #333;
+            color: white;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .score {
+            font-size: 1.2rem;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        
+/* Add this CSS for the 'used' class */
+.draggable.used {
+    cursor: not-allowed;
+    background-color: #cccccc;
+    color: #666666;
+    pointer-events: none; /* Prevent interaction */
+    opacity: 0.5;
+}
+#big-button {
+    background-color: #cccccc; /* Light gray background */
+    color: #333; /* Dark text for contrast */
+    font-size: 1rem; /* Slightly smaller font size */
+    font-weight: bold; /* Bold text */
+    padding: 0.5rem 1rem; /* Reduced padding */
+    border: 2px solid #4CAF50; /* Green border */
+    border-radius: 4px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+#big-button:hover {
+    background-color: #bec2be; /* Darker green on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+}
+
+#big-button:active {
+    background-color: #9edba0; /* Even darker green on click */
+    transform: translateY(0); /* Reset lift on click */
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2); /* Reduced shadow */
+}
+
+</style>
+
+
+
+</head>
+<body>
+    <header>
+        <h1>Development Quiz</h1>
+
+        <a href="development.html">Read notes</a>
+    </header>
+    <section>
+        <!-- Answer grid -->
+         <div> <p><strong>Drag the correct answers from the box and drop them into the blanks in each question. Click "Submit" to see your score.</strong></p>
+         </div>
+
+<div class="answers-grid" id="answers-grid">
+   
+  
+
+    <div class="draggable" draggable="true" data-answer="social indicators"> social indicators </div>
+    <div class="draggable" draggable="true" data-answer="economic indicators">economic indicators</div>
+    <div class="draggable" draggable="true" data-answer="employment">employment  </div>
+    <div class="draggable" draggable="true" data-answer="India">India </div>
+    <div class="draggable" draggable="true" data-answer="Transnational Corporations">Transnational Corporations</div>
+    <div class="draggable" draggable="true" data-answer="Colonial hegemony">Colonial hegemony</div>
+    <div class="draggable" draggable="true" data-answer="composite indicators">composite indicators</div>
+    <div class="draggable" draggable="true" data-answer="Japan">Japan </div>
+    <div class="draggable" draggable="true" data-answer="exploit local workers">exploit local workers</div>
+    <div class="draggable" draggable="true" data-answer="wholistic">wholistic</div>
+    <div class="draggable" draggable="true" data-answer="debt relief">debt relief</div>
+    <div class="draggable" draggable="true" data-answer="TNC">TNC</div>
+    <div class="draggable" draggable="true" data-answer="natural disasters">natural disasters</div>
+    <div class="draggable" draggable="true" data-answer="home countries">home countries</div>
+    <div class="draggable" draggable="true" data-answer="political structure">political structure</div>
+    <div class="draggable" draggable="true" data-answer="community responsibility">community responsibility</div>
+    <div class="draggable" draggable="true" data-answer="depleted more water">depleted more water</div>
+    <div class="draggable" draggable="true" data-answer="indicator">indicator</div>
+    
+    <div class="draggable" draggable="true" data-answer="water conservation">water conservation</div>
+    <div class="draggable" draggable="true" data-answer="trade opportunities">trade opportunities</div>
+    
+</div>
+
+<section>
+        
+        
+    
+    
+    More Economically Developed Countries(MEDC)include: Germany,<span class="blank" data-correct="Japan" ondrop="drop(event)" ondragover="allowDrop(event)"></span> and USA while Less Economically Developed Countries include:- Kenya , Ghana and <span class="blank" data-correct="India" ondrop="drop(event)" ondragover="allowDrop(event)"></span>.
+    
+    GDP per capita, and GNI are examples of <span class="blank" data-correct="economic indicators" ondrop="drop(event)" ondragover="allowDrop(event)"></span> of development.Literacy rates, life expectancy, and healthcare are examples of <span class="blank" data-correct="social indicators" ondrop="drop(event)" ondragover="allowDrop(event)"></span> of developement.
+    
+    Human development index is an example of <span class="blank" data-correct="composite indicators" ondrop="drop(event)" ondragover="allowDrop(event)"></span> of development. It combines several indicators in measuring development. Life expectancy , GNI per capita , mean years of schooling and expected years of schooling. 
+    
+    The major advantage is that it is more<span class="blank" data-correct="wholistic" ondrop="drop(event)" ondragover="allowDrop(event)"></span> as it does not use a single <span class="blank" data-correct="indicator" ondrop="drop(event)" ondragover="allowDrop(event)"></span>. Also it is measurable and can be used to compare development within a country and between countries.
+    
+    Development can be influenced naturally by climate,<span class="blank" data-correct="natural disasters" ondrop="drop(event)" ondragover="allowDrop(event)"></span>, availability of natural resources and a country being landlocked. 
+    
+    Economically it can be influenced by <span class="blank" data-correct="trade opportunities" ondrop="drop(event)" ondragover="allowDrop(event)"></span>, investment and industrial growth. 
+    
+    Socially it can be influenced by <span class="blank" data-correct="political structure" ondrop="drop(event)" ondragover="allowDrop(event)"></span> of a country, as well as the state of the healthcare and education.
+    
+    Historically it can be influenced by <span class="blank" data-correct="Colonial hegemony" ondrop="drop(event)" ondragover="allowDrop(event)"></span>.
+    
+    To help in bridging the development gap <span class="blank" data-correct="debt relief" ondrop="drop(event)" ondragover="allowDrop(event)"></span>, aid, and fairtrade agreement are some of the ways.
+    
+    <span class="blank" data-correct="Transnational Corporations" ondrop="drop(event)" ondragover="allowDrop(event)"></span> are large companies that operate in many countries while their headquater is often located in an MEDC. They boost investments, <span class="blank" data-correct="employment " ondrop="drop(event)" ondragover="allowDrop(event)"></span> and infrastrures, while on the other hand they can <span class="blank" data-correct="exploit local workers" ondrop="drop(event)" ondragover="allowDrop(event)"></span>, adulterate the local culture , and repatriate most of the profits back to <span class="blank" data-correct="home countries" ondrop="drop(event)" ondragover="allowDrop(event)"></span>. 
+    
+    Indian an LEDC has many <span class="blank" data-correct="TNC" ondrop="drop(event)" ondragover="allowDrop(event)"></span>s including Coca-Cola which has set up numerous plants in the country.
+    
+    Job creation, huge contribution to GDP and carrying out many <span class="blank" data-correct="community responsibility" ondrop="drop(event)" ondragover="allowDrop(event)"></span> initiatives including <span class="blank" data-correct="water conservation" ondrop="drop(event)" ondragover="allowDrop(event)"></span> and education projects are some of the ways Coca-Cola benefits the country,
+    
+    In another twist, they are said to have <span class="blank" data-correct="depleted more water" ondrop="drop(event)" ondragover="allowDrop(event)"></span> resources, caused lots of environmental damage and repatriate many of the profits back to USA where they are headquatered 
+    
+    <button id = "big-button" onclick="submitQuiz('quiz')">Submit</button>
+    <p class="score" id="score"></p>   </section>
+    <div class="overlay" id="overlay"></div>
+   
+    <div class="score-modal" id="scoreModal">
+        <h2>Quiz Results</h2>
+        <p id="scoreText"></p>
+        
+    </div>
+    </section>
+<script>
+    function allowDrop(event) {
+        event.preventDefault();
+    }
+    
+    function dragStart(event) {
+        event.dataTransfer.setData("text", event.target.dataset.answer);
+    }
+    
+    function drop(event) {
+        event.preventDefault();
+        const answer = event.dataTransfer.getData("text");
+        if (event.target.classList.contains("blank") && !event.target.classList.contains("dropped")) {
+            event.target.textContent = answer;
+            event.target.classList.add("dropped");
+            event.target.dataset.answer = answer;
+        }
+    }
+    
+    // Enable users to clear their answer by clicking on the blank space
+    function clearAnswer(event) {
+        if (event.target.classList.contains("blank") && event.target.classList.contains("dropped")) {
+            event.target.textContent = "";
+            event.target.classList.remove("dropped");
+            delete event.target.dataset.answer;
+        }
+    }
+    
+    document.querySelectorAll(".blank").forEach(blank => {
+        blank.addEventListener("click", clearAnswer);
+    });
+    
+    function submitQuiz() {
+        const blanks = document.querySelectorAll(".blank");
+        let score = 0;
+        blanks.forEach(blank => {
+            if (blank.dataset.answer === blank.dataset.correct) {
+                score++;
+                blank.style.backgroundColor = "lightgreen";
+            } else {
+                blank.style.backgroundColor = "lightcoral";
+                blank.textContent = blank.dataset.correct; // Show missed answers
+            }
+        });
+        document.getElementById("scoreText").textContent = `Your score is ${score} out of ${blanks.length}`;
+        document.getElementById("overlay").classList.add("show");
+        document.getElementById("scoreModal").classList.add("show");
+    }
+    
+    function closeModal() {
+        document.getElementById("overlay").classList.remove("show");
+        document.getElementById("scoreModal").classList.remove("show");
+    }
+    
+    document.querySelectorAll(".draggable").forEach(item => {
+        item.addEventListener("dragstart", dragStart);
+    });
+
+</script>
+    </body>
+</html>
+<footer>
+    <p><strong>For online support call/whatsapp +234-703-463-258-9/send an email to gametheory242@gmail.com </strong> </p>
+</footer>
+

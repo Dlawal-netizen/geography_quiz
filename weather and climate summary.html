@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather and Climate Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #4CAF50;
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+
+
+        a {
+            font-size: 1.5em; /* Makes the link words bigger */
+            color: #FF5733; /* Initial link color */
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+         a:hover {
+            color: #3375FF; /* Changes the color when hovered */
+            transform: scale(1.1); /* Adds a zoom-in effect */
+        }
+  
+        .answers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .draggable {
+            background: #4CAF50;
+            color: white;
+            padding: 0.5rem;
+            text-align: center;
+            border-radius: 4px;
+            cursor: grab;
+        }
+        .quiz {
+            margin-top: 2rem;
+        }
+        .quiz .question {
+            margin-bottom: 1rem;
+        }
+        .blank {
+            display: inline-block;
+            width: 150px;
+            height: 30px;
+            margin-left: 5px;
+            border: 1px dashed #333;
+            text-align: center;
+            line-height: 30px;
+            background: #f9f9f9;
+        }
+        .blank.dropped {
+            background: #e0f7fa;
+        }
+        footer {
+            text-align: center;
+            background: #333;
+            color: white;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .score {
+            font-size: 1.2rem;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        
+/* Add this CSS for the 'used' class */
+.draggable.used {
+    cursor: not-allowed;
+    background-color: #cccccc;
+    color: #666666;
+    pointer-events: none; /* Prevent interaction */
+    opacity: 0.5;
+}
+#big-button {
+    background-color: #cccccc; /* Light gray background */
+    color: #333; /* Dark text for contrast */
+    font-size: 1rem; /* Slightly smaller font size */
+    font-weight: bold; /* Bold text */
+    padding: 0.5rem 1rem; /* Reduced padding */
+    border: 2px solid #4CAF50; /* Green border */
+    border-radius: 4px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+#big-button:hover {
+    background-color: #bec2be; /* Darker green on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+}
+
+#big-button:active {
+    background-color: #9edba0; /* Even darker green on click */
+    transform: translateY(0); /* Reset lift on click */
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2); /* Reduced shadow */
+}
+  </style>
+</head>
+<body>
+  <header><h1>Weather and Climate </h1></header>
+
+    <div class="note">
+        <h2>Definitions</h2>
+        <p><strong>Weather:</strong> The day-to-day atmospheric conditions in a specific place, including temperature, precipitation, wind, and humidity.</p>
+        <p><strong>Climate:</strong> The average weather conditions of a region over a long period (typically 30 years).</p>
+    </div>
+
+    <div class="note">
+        <h2>Factors Affecting Weather and Climate</h2>
+        <ul>
+            <li><strong>Latitude:</strong> Determines the amount of solar energy received. Regions near the equator experience higher temperatures, while polar regions are colder.</li>
+            <li><strong>Altitude:</strong> Higher altitudes have lower temperatures due to decreased air pressure. Example: Mountains are cooler than plains.</li>
+            <li><strong>Distance from the Sea:</strong> Coastal areas have a maritime climate with mild temperatures. Inland areas experience a continental climate with more temperature extremes.</li>
+            <li><strong>Ocean Currents:</strong> Warm currents (e.g., Gulf Stream) raise temperatures. Cold currents (e.g., Labrador Current) lower temperatures.</li>
+             <li><strong>Prevailing Winds:</strong> Winds from oceans bring moisture and rainfall. Winds from deserts cause dry conditions.</li>
+            <li><strong>Topography:</strong> Mountains can block winds, causing rain on the windward side (relief rainfall) and dryness on the leeward side (rain shadow effect).</li>
+            <li><strong>Human Activities:</strong> Urbanization and deforestation affect local weather patterns.</li>
+        </ul>
+    </div>
+
+    <div class="note">
+        <h2>Weather Instruments</h2>
+        <h3>Thermometer</h3>
+        <p><strong>Usage:</strong> Measures air temperature. Mercury or alcohol expands or contracts in response to temperature changes.</p>
+        <p><strong>Siting:</strong> Placed inside a Stevenson screen at about 1.2–1.5 meters above ground to prevent direct sunlight and allow airflow.</p>
+
+        <h3>Rain Gauge</h3>
+        <p><strong>Usage:</strong> Measures the amount of precipitation in millimeters using a funnel and a graduated cylinder.</p>
+        <p><strong>Siting:</strong> Positioned in an open area, away from buildings or trees, with the top about 30 cm above ground to prevent splashes.</p>
+
+        <h3>Barometer</h3>
+        <p><strong>Usage:</strong> Measures atmospheric pressure in millibars (mb). Essential for predicting weather changes.</p>
+        <p><strong>Siting:</strong> Kept indoors in a stable environment to avoid exposure to wind or rain.</p>
+
+        <h3>Anemometer</h3>
+        <p><strong>Usage:</strong> Measures wind speed. Cups spin faster with higher wind speeds.</p>
+        <p><strong>Siting:</strong> Placed at least 10 meters above ground or on open rooftops to avoid obstructions.</p>
+
+        <h3>Wind Vane</h3>
+        <p><strong>Usage:</strong> Shows wind direction, pointing where the wind is coming from.</p>
+        <p><strong>Siting:</strong> Mounted on high poles, away from structures that can block wind.</p>
+
+        <h3>Hygrometer</h3>
+        <p><strong>Usage:</strong> Measures relative humidity using wet and dry bulb thermometers.</p>
+        <p><strong>Siting:</strong> Placed inside a Stevenson screen to maintain standardized conditions.</p>
+
+        <h3>Sunshine Recorder</h3>
+        <p><strong>Usage:</strong> Records the duration of sunshine by burning a trace on a card.</p>
+        <p><strong>Siting:</strong> Positioned in an open area with no shadows throughout the day.</p>
+    </div>
+
+    <div class="note">
+        <h2>The Stevenson Screen and Its Attributes</h2>
+        <p><strong>Purpose:</strong> Houses weather instruments (thermometers, hygrometer) to ensure accurate readings by providing standardized conditions.</p>
+        <ul>
+            <li><strong>White Color:</strong> Reflects sunlight to prevent heat absorption.</li>
+            <li><strong>Slatted Sides:</strong> Allows free airflow while protecting instruments from direct wind.</li>
+            <li><strong>Raised on Legs:</strong> Positioned 1.2–1.5 meters above ground to avoid heat radiated from the surface.</li>
+            <li><strong>Double Roof:</strong> Acts as insulation to keep internal conditions stable.</li>
+            <li><strong>Door Orientation:</strong> Faces away from the sun (usually north in the Northern Hemisphere) to avoid direct sunlight entering.</li>
+        </ul>
+    </div>
+
+    <div class="note">
+        <h2>Tropical Climates</h2>
+        <h3>1. Tropical Rainforest Climate</h3>
+        <p><strong>Characteristics:</strong></p>
+        <ul>
+            <li>High temperatures (average 25–30°C) and humidity.</li>
+            <li>Heavy rainfall, exceeding 2000 mm annually, distributed throughout the year.</li>
+        </ul>
+        <p><strong>Locations:</strong> Found near the equator (e.g., Amazon, Congo Basin).</p>
+
+        <h3>2. Tropical Desert Climate</h3>
+        <p><strong>Characteristics:</strong></p>
+        <ul>
+            <li>High temperatures during the day (up to 50°C) and cooler nights.</li>
+            <li>Very low annual rainfall (less than 250 mm).</li>
+        </ul>
+        <p><strong>Locations:</strong> Found in subtropical regions (e.g., Sahara, Kalahari).</p>
+    </div>
+
+    <div class="note">
+        <h2>Comparison of Plant Adaptations in Tropical Rainforests and Tropical Deserts</h2>
+        <table>
+            <tr>
+                <th>Feature</th>
+                <th>Tropical Rainforest Plants</th>
+                <th>Tropical Desert Plants</th>
+            </tr>
+            <tr>
+                <td>Growth Conditions</td>
+                <td>Abundant sunlight, high rainfall, humid.</td>
+                <td>Scarce water, extreme heat.</td>
+            </tr>
+            <tr>
+                <td>Leaf Structure</td>
+                <td>Broad leaves to capture sunlight.</td>
+                <td>Small, waxy leaves to reduce water loss.</td>
+            </tr>
+            <tr>
+                <td>Roots</td>
+                <td>Shallow but widespread for surface nutrients.</td>
+                <td>Deep roots to access underground water.</td>
+            </tr>
+            <tr>
+                <td>Water Storage</td>
+                <td>Limited, as water is readily available.</td>
+                <td>Succulents like cacti store water in stems.</td>
+            </tr>
+            <tr>
+                <td>Adaptations</td>
+                <td>Drip tips to shed excess water.</td>
+                <td>Thick cuticles to prevent evaporation.</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="note">
+        <h2>Comparison of Animal Adaptations in Tropical Rainforests and Tropical Deserts</h2>
+        <table>
+            <tr>
+                <th>Feature</th>
+                <th>Tropical Rainforest Animals</th>
+                <th>Tropical Desert Animals</th>
+            </tr>
+            <tr>
+                <td>Biodiversity</td>
+                <td>Extremely high (e.g., jaguars, parrots).</td>
+                <td>Lower diversity (e.g., camels, scorpions).</td>
+            </tr>
+            <tr>
+                <td>Camouflage</td>
+                <td>Bright colors for mating or blending in dense foliage.</td>
+                <td>Sand-colored bodies for blending into the desert.</td>
+            </tr>
+            <tr>
+                <td>Water Needs</td>
+                <td>No special adaptations; water is abundant.</td>
+                <td>Can survive with minimal water (e.g., camels store fat in humps).</td>
+            </tr>
+        </table>
+            
+            <h1>Types of Rainfall and Clouds</h1>
+
+            <div>
+                <h2>Types of Rainfall</h2>
+                
+                <h3>1. Convectional Rainfall</h3>
+                <p><strong>Description:</strong> This type of rainfall occurs when the ground is heated by the sun, causing the air above it to warm, rise, and cool at higher altitudes. As the air cools, it condenses to form clouds, which can lead to heavy rainfall.</p>
+                <p><strong>Common in:</strong> Tropical areas near the equator (e.g., rain in rainforests) where the temperature is high and the atmosphere is moist.</p>
+        
+                <h3>2. Relief (Orographic) Rainfall</h3>
+                <p><strong>Description:</strong> This occurs when moist air is forced to rise over a mountain range. As the air rises, it cools and condenses to form clouds and rain on the windward side of the mountains. The leeward side, however, remains dry due to the rain shadow effect.</p>
+                <p><strong>Common in:</strong> Coastal areas with mountains (e.g., the west coast of the United Kingdom).</p>
+        
+                <h3>3. Frontal Rainfall</h3>
+                <p><strong>Description:</strong> This occurs when two different air masses meet. The warmer, lighter air is forced to rise over the cooler, denser air. As the warm air rises, it cools and condenses, leading to the formation of clouds and precipitation.</p>
+                <p><strong>Common in:</strong> Temperate regions where warm and cold air masses frequently meet (e.g., Europe, North America).</p>
+            </div>
+        
+            <div>
+                <h2>Types of Clouds</h2>
+        
+                <h3>1. Cirrus Clouds</h3>
+                <p><strong>Description:</strong> Cirrus clouds are high-altitude clouds found at 6,000 meters (20,000 feet) and above. They are wispy, thin, and usually white, consisting of ice crystals due to the cold temperatures at such high altitudes.</p>
+                <p><strong>Associated Weather:</strong> They typically indicate fair weather but can also signal that a change in the weather is coming, as they precede weather fronts.</p>
+        
+                <h3>2. Cumulus Clouds</h3>
+                <p><strong>Description:</strong> Cumulus clouds are puffy, white clouds with flat bases and appear at low to middle altitudes (typically 2,000 to 6,000 meters or 6,600 to 20,000 feet). These clouds are often associated with fair weather, but when they grow larger, they can develop into storm clouds (cumulonimbus).</p>
+                <p><strong>Associated Weather:</strong> Fair, clear skies but can develop into thunderstorms if they grow in height.</p>
+        
+                <h3>3. Stratus Clouds</h3>
+                <p><strong>Description:</strong> Stratus clouds form in uniform layers that can cover large areas of the sky. They are low-altitude clouds (below 2,000 meters) and often appear as a thick, grey blanket.</p>
+                <p><strong>Associated Weather:</strong> They often bring overcast skies and can produce light precipitation, such as drizzle or light rain.</p>
+            </div>
+        
+            <div>
+                <h2>Measuring Cloud Cover in Oktas</h2>
+                <p><strong>Oktas:</strong> The sky is measured in "oktas," which is a unit used to describe how much of the sky is covered by clouds. One okta equals 1/8 of the sky. Cloud coverage is visually estimated as follows:</p>
+                <table>
+                    <tr>
+                        <th>Cloud Coverage</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>0 Oktas</td>
+                        <td>Clear skies (no clouds).</td>
+                    </tr>
+                    <tr>
+                        <td>1-2 Oktas</td>
+                        <td>A small amount of cloud coverage.</td>
+                    </tr>
+                    <tr>
+                        <td>3-4 Oktas</td>
+                        <td>Moderate cloud coverage.</td>
+                    </tr>
+                    <tr>
+                        <td>5-6 Oktas</td>
+                        <td>Mostly cloudy skies.</td>
+                    </tr>
+                    <tr>
+                        <td>7-8 Oktas</td>
+                        <td>Fully covered sky with clouds.</td>
+                    </tr>
+                </table>
+            </div>
+            <footer>
+                <p>For online support call/whatsapp +234-703-463-258-9/send an email to gametheory242@gmail.com </p>
+            </footer>
+           </body>
+        </html>
+        
