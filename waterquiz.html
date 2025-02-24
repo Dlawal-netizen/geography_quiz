@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz on Water </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #4CAF50;
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+
+
+        a {
+            font-size: 1.5em; /* Makes the link words bigger */
+            color: #FF5733; /* Initial link color */
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+         a:hover {
+            color: #3375FF; /* Changes the color when hovered */
+            transform: scale(1.1); /* Adds a zoom-in effect */
+        }
+  
+        .answers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .draggable {
+            background: #4CAF50;
+            color: white;
+            padding: 0.5rem;
+            text-align: center;
+            border-radius: 4px;
+            cursor: grab;
+        }
+        .quiz {
+            margin-top: 2rem;
+        }
+        .quiz .question {
+            margin-bottom: 1rem;
+        }
+        .blank {
+            display: inline-block;
+            width: 150px;
+            height: 30px;
+            margin-left: 5px;
+            border: 1px dashed #333;
+            text-align: center;
+            line-height: 30px;
+            background: #f9f9f9;
+        }
+        .blank.dropped {
+            background: #e0f7fa;
+        }
+        footer {
+            text-align: center;
+            background: #333;
+            color: white;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .score {
+            font-size: 1.2rem;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        
+/* Add this CSS for the 'used' class */
+.draggable.used {
+    cursor: not-allowed;
+    background-color: #cccccc;
+    color: #666666;
+    pointer-events: none; /* Prevent interaction */
+    opacity: 0.5;
+}
+#big-button {
+    background-color: #cccccc; /* Light gray background */
+    color: #333; /* Dark text for contrast */
+    font-size: 1rem; /* Slightly smaller font size */
+    font-weight: bold; /* Bold text */
+    padding: 0.5rem 1rem; /* Reduced padding */
+    border: 2px solid #4CAF50; /* Green border */
+    border-radius: 4px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+#big-button:hover {
+    background-color: #bec2be; /* Darker green on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+}
+
+#big-button:active {
+    background-color: #9edba0; /* Even darker green on click */
+    transform: translateY(0); /* Reset lift on click */
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2); /* Reduced shadow */
+}
+
+</style>
+
+
+
+</head>
+<body>
+    <header>
+        <h1>Quiz on Water Resources </h1>
+
+        <a href="water.html">Read notes</a>
+    </header>
+    <section>
+        <!-- Answer grid -->
+         <div> <p><strong>Drag the correct answers from the box and drop them into the blanks in each question. Click "Submit" to see your score.</strong></p>
+         </div>
+
+<div class="answers-grid" id="answers-grid">
+   
+  
+
+    <div class="draggable" draggable="true" data-answer="dam"> dam </div>
+    <div class="draggable" draggable="true" data-answer="economic development">economic development</div>
+    <div class="draggable" draggable="true" data-answer="water scarcity">water scarcity</div>
+    <div class="draggable" draggable="true" data-answer="drip irrigation">drip irrigation </div>
+    <div class="draggable" draggable="true" data-answer="overpopulation">overpopulation</div>
+    <div class="draggable" draggable="true" data-answer="water resources">water resources</div>
+    <div class="draggable" draggable="true" data-answer="water conservation">water conservation</div>
+    <div class="draggable" draggable="true" data-answer="severe water shortage">severe water shortage </div>
+    <div class="draggable" draggable="true" data-answer="groundwater depletion">groundwater depletion</div>
+    <div class="draggable" draggable="true" data-answer="Saudi Arabia">Saudi Arabia</div>
+    <div class="draggable" draggable="true" data-answer="Sustainable">Sustainable</div>
+    <div class="draggable" draggable="true" data-answer="cholera">cholera</div>
+    <div class="draggable" draggable="true" data-answer="conflicts">conflicts</div>
+    <div class="draggable" draggable="true" data-answer="dry seasons">dry seasons</div>
+    <div class="draggable" draggable="true" data-answer="domestic">domestic</div>
+    <div class="draggable" draggable="true" data-answer="agriculture">agriculture</div>
+    <div class="draggable" draggable="true" data-answer="suplus">suplus</div>
+    <div class="draggable" draggable="true" data-answer="desalination">desalination</div>
+    
+    <div class="draggable" draggable="true" data-answer="boreholes">boreholes</div>
+    <div class="draggable" draggable="true" data-answer="reservoir">reservoir</div>
+    
+</div>
+
+<section>
+        
+    
+   
+    Water is used globally in three main sectors: <span class="blank" data-correct="agriculture" ondrop="drop(event)" ondragover="allowDrop(event)"></span>, domestic, and industrial. 
+    
+    In developing countries, the highest proportion of water is used for agriculture, while in developed countries, more water is allocated to <span class="blank" data-correct="domestic" ondrop="drop(event)" ondragover="allowDrop(event)"></span> and industrial purposes.
+    
+    A large artificial lake used to store water for domestic, industrial, or agricultural use is called a <span class="blank" data-correct="reservoir" ondrop="drop(event)" ondragover="allowDrop(event)"></span>. 
+    
+    One method of increasing water supply is <span class="blank" data-correct="desalination" ondrop="drop(event)" ondragover="allowDrop(event)"></span>, which is the process of removing salt from seawater to produce fresh drinking water. 
+    
+    Traditional methods of extracting groundwater include wells and boreholes, with <span class="blank" data-correct="boreholes" ondrop="drop(event)" ondragover="allowDrop(event)"></span> being deep, narrow holes drilled into the ground to access underground water sources. 
+    
+    Another common water management structure is a <span class="blank" data-correct="dam" ondrop="drop(event)" ondragover="allowDrop(event)"></span>, a man-made barrier built across a river to control water flow and create a reservoir. 
+    
+    <span class="blank" data-correct="Saudi Arabia" ondrop="drop(event)" ondragover="allowDrop(event)"></span> is the country that relies most heavily on desalination to meet its water needs. 
+    
+    Water shortages occur due to various factors, including climate change, <span class="blank" data-correct="overpopulation" ondrop="drop(event)" ondragover="allowDrop(event)"></span>, and overuse of water resources. 
+    
+    A lack of access to clean water can lead to serious diseases such as <span class="blank" data-correct="cholera" ondrop="drop(event)" ondragover="allowDrop(event)"></span> and dysentery, impacting public health. 
+    
+    Poor water supply also affects <span class="blank" data-correct="economic development" ondrop="drop(event)" ondragover="allowDrop(event)"></span> by reducing productivity and increasing healthcare costs. 
+    
+    The United Arab Emirates (UAE) is an example of a country that faces <span class="blank" data-correct="severe water shortage" ondrop="drop(event)" ondragover="allowDrop(event)"></span> and has implemented large-scale desalination as a solution. 
+    
+    To manage <span class="blank" data-correct="water resources" ondrop="drop(event)" ondragover="allowDrop(event)"></span> more efficiently, countries often use methods such as <span class="blank" data-correct="drip irrigation" ondrop="drop(event)" ondragover="allowDrop(event)"></span>, which reduces water wastage in agriculture. 
+    
+    In regions experiencing extreme water scarcity, governments sometimes resort to inter-basin water transfer schemes to transport water from areas of <span class="blank" data-correct="suplus" ondrop="drop(event)" ondragover="allowDrop(event)"></span> to areas of shortage. Water shortages often lead to <span class="blank" data-correct="conflicts" ondrop="drop(event)" ondragover="allowDrop(event)"></span> between agricultural and domestic users over resource allocation.
+
+    <span class="blank" data-correct="water scarcity" ondrop="drop(event)" ondragover="allowDrop(event)"></span> occurs when an area lacks sufficient clean water to meet its population’s needs.
+    
+    In response to this challenge, governments frequently implement awareness campaigns to encourage <span class="blank" data-correct="water conservation" ondrop="drop(event)" ondragover="allowDrop(event)"></span>. 
+    
+    Constructing reservoirs and dams provides a reliable water supply during <span class="blank" data-correct="dry seasons" ondrop="drop(event)" ondragover="allowDrop(event)"></span>. However, overuse of groundwater can lead to <span class="blank" data-correct="groundwater depletion" ondrop="drop(event)" ondragover="allowDrop(event)"></span>, a serious issue where the water table drops significantly. 
+    
+    Case studies on water supply typically examine a specific country or region, analyzing its water availability, challenges, and management strategies. 
+    
+    <span class="blank" data-correct="Sustainable" ondrop="drop(event)" ondragover="allowDrop(event)"></span> water management is essential to ensure a stable and sufficient supply of water for future generations.
+
+
+
+
+
+
+
+
+
+
+    <button id = "big-button" onclick="submitQuiz('quiz')">Submit</button>
+    <p class="score" id="score"></p>   </section>
+    <div class="overlay" id="overlay"></div>
+   
+    <div class="score-modal" id="scoreModal">
+        <h2>Quiz Results</h2>
+        <p id="scoreText"></p>
+        
+    </div>
+    </section>
+<script>
+    function allowDrop(event) {
+        event.preventDefault();
+    }
+    
+    function dragStart(event) {
+        event.dataTransfer.setData("text", event.target.dataset.answer);
+    }
+    
+    function drop(event) {
+        event.preventDefault();
+        const answer = event.dataTransfer.getData("text");
+        if (event.target.classList.contains("blank") && !event.target.classList.contains("dropped")) {
+            event.target.textContent = answer;
+            event.target.classList.add("dropped");
+            event.target.dataset.answer = answer;
+        }
+    }
+    
+    // Enable users to clear their answer by clicking on the blank space
+    function clearAnswer(event) {
+        if (event.target.classList.contains("blank") && event.target.classList.contains("dropped")) {
+            event.target.textContent = "";
+            event.target.classList.remove("dropped");
+            delete event.target.dataset.answer;
+        }
+    }
+    
+    document.querySelectorAll(".blank").forEach(blank => {
+        blank.addEventListener("click", clearAnswer);
+    });
+    
+    function submitQuiz() {
+        const blanks = document.querySelectorAll(".blank");
+        let score = 0;
+        blanks.forEach(blank => {
+            if (blank.dataset.answer === blank.dataset.correct) {
+                score++;
+                blank.style.backgroundColor = "lightgreen";
+            } else {
+                blank.style.backgroundColor = "lightcoral";
+                blank.textContent = blank.dataset.correct; // Show missed answers
+            }
+        });
+        document.getElementById("scoreText").textContent = `Your score is ${score} out of ${blanks.length}`;
+        document.getElementById("overlay").classList.add("show");
+        document.getElementById("scoreModal").classList.add("show");
+    }
+    
+    function closeModal() {
+        document.getElementById("overlay").classList.remove("show");
+        document.getElementById("scoreModal").classList.remove("show");
+    }
+    
+    document.querySelectorAll(".draggable").forEach(item => {
+        item.addEventListener("dragstart", dragStart);
+    });
+
+</script>
+    </body>
+</html>
+<footer>
+    <p><strong>For online support call/whatsapp +234-703-463-258-9/send an email to gametheory242@gmail.com </strong> </p>
+</footer>
+
