@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz on Energy </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #4CAF50;
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+
+
+        a {
+            font-size: 1.5em; /* Makes the link words bigger */
+            color: #FF5733; /* Initial link color */
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+         a:hover {
+            color: #3375FF; /* Changes the color when hovered */
+            transform: scale(1.1); /* Adds a zoom-in effect */
+        }
+  
+        .answers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .draggable {
+            background: #4CAF50;
+            color: white;
+            padding: 0.5rem;
+            text-align: center;
+            border-radius: 4px;
+            cursor: grab;
+        }
+        .quiz {
+            margin-top: 2rem;
+        }
+        .quiz .question {
+            margin-bottom: 1rem;
+        }
+        .blank {
+            display: inline-block;
+            width: 150px;
+            height: 30px;
+            margin-left: 5px;
+            border: 1px dashed #333;
+            text-align: center;
+            line-height: 30px;
+            background: #f9f9f9;
+        }
+        .blank.dropped {
+            background: #e0f7fa;
+        }
+        footer {
+            text-align: center;
+            background: #333;
+            color: white;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .score {
+            font-size: 1.2rem;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        
+/* Add this CSS for the 'used' class */
+.draggable.used {
+    cursor: not-allowed;
+    background-color: #cccccc;
+    color: #666666;
+    pointer-events: none; /* Prevent interaction */
+    opacity: 0.5;
+}
+#big-button {
+    background-color: #cccccc; /* Light gray background */
+    color: #333; /* Dark text for contrast */
+    font-size: 1rem; /* Slightly smaller font size */
+    font-weight: bold; /* Bold text */
+    padding: 0.5rem 1rem; /* Reduced padding */
+    border: 2px solid #4CAF50; /* Green border */
+    border-radius: 20px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+#big-button:hover {
+    background-color: #bec2be; /* Darker green on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+}
+
+#big-button:active {
+    background-color: #9edba0; /* Even darker green on click */
+    transform: translateY(0); /* Reset lift on click */
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2); /* Reduced shadow */
+}
+
+</style>
+
+
+
+</head>
+<body>
+    <header>
+        <h1>Quiz on Energy Resources </h1>
+
+        <a href="energy resources.html">Read notes</a>
+    </header>
+    <section>
+        <!-- Answer grid -->
+         <div> <p><strong>Drag the correct answers from the box and drop them into the blanks in each question. Click "Submit" to see your score.</strong></p>
+         </div>
+
+<div class="answers-grid" id="answers-grid">
+   
+  
+
+    <div class="draggable" draggable="true" data-answer="industry">industry</div>
+    <div class="draggable" draggable="true" data-answer="Geothermal">Geothermal</div>
+    <div class="draggable" draggable="true" data-answer="weather-dependent">weather-dependent</div>
+    <div class="draggable" draggable="true" data-answer="Iceland">Iceland </div>
+    <div class="draggable" draggable="true" data-answer="fossil fuels">fossil fuels</div>
+    <div class="draggable" draggable="true" data-answer="nuclear waste">nuclear waste</div>
+    <div class="draggable" draggable="true" data-answer="noise pollution">noise pollution</div>
+    <div class="draggable" draggable="true" data-answer="environmental">environmental</div>
+    <div class="draggable" draggable="true" data-answer="flowing water">flowing water</div>
+    <div class="draggable" draggable="true" data-answer="geopolitical">geopolitical</div>
+    <div class="draggable" draggable="true" data-answer="non-renewable">non-renewable </div>
+    <div class="draggable" draggable="true" data-answer="natural gas">natural gas</div>
+    <div class="draggable" draggable="true" data-answer="Biofuels">Biofuels</div>
+    <div class="draggable" draggable="true" data-answer="Oil">oil </div>
+    <div class="draggable" draggable="true" data-answer="methane">methane</div>
+    <div class="draggable" draggable="true" data-answer="economic">economic</div>
+    <div class="draggable" draggable="true" data-answer="energy output">energy output</div>
+    <div class="draggable" draggable="true" data-answer="nuclear fission">nuclear fission</div>
+    
+    <div class="draggable" draggable="true" data-answer="wind power">wind power</div>
+    <div class="draggable" draggable="true" data-answer="Coal">Coal</div>
+    
+</div>
+
+<section>
+        
+    
+    Energy is essential for <span class="blank" data-correct="economic" ondrop="drop(event)" ondragover="allowDrop(event)"></span> development, industrial growth, and daily life.
+    
+    <span class="blank" data-correct="Coal" ondrop="drop(event)" ondragover="allowDrop(event)"></span> is a fossil fuel mainly used for electricity generation and heavy industries. 
+    
+    Oil is a versatile energy source used for transportation, heating, and <span class="blank" data-correct="industry" ondrop="drop(event)" ondragover="allowDrop(event)"></span>. 
+    
+    Compared to coal and oil, <span class="blank" data-correct="natural gas" ondrop="drop(event)" ondragover="allowDrop(event)"></span> is a cleaner non-renewable energy source. 
+    
+    <span class="blank" data-correct="Geothermal" ondrop="drop(event)" ondragover="allowDrop(event)"></span> energy harnesses heat from the Earth's interior.
+    
+    Wind turbines generate electricity using <span class="blank" data-correct="wind power" ondrop="drop(event)" ondragover="allowDrop(event)"></span>.
+    
+    Hydroelectric power (HEP) uses <span class="blank" data-correct="flowing water" ondrop="drop(event)" ondragover="allowDrop(event)"></span> to generate electricity. 
+    
+    Solar power converts sunlight into electricity. <span class="blank" data-correct="Biofuels" ondrop="drop(event)" ondragover="allowDrop(event)"></span> are derived from organic materials like crops and waste. 
+    
+    Nuclear power uses <span class="blank" data-correct="nuclear fission" ondrop="drop(event)" ondragover="allowDrop(event)"></span> to produce electricity.
+
+   A major disadvantage of coal as an energy source is that it is <span class="blank" data-correct="non-renewable" ondrop="drop(event)" ondragover="allowDrop(event)"></span>,and contributes to global warming, while its major advantage is that it generates high <span class="blank" data-correct="energy output" ondrop="drop(event)" ondragover="allowDrop(event)"></span>. 
+
+   Oil spills can cause significant environmental damage and create <span class="blank" data-correct="geopolitical" ondrop="drop(event)" ondragover="allowDrop(event)"></span> tensions. 
+   
+   Natural gas emits <span class="blank" data-correct="methane" ondrop="drop(event)" ondragover="allowDrop(event)"></span>, a greenhouse gas, during extraction and use. 
+   
+   A common disadvantage of solar power, wind and some other renewable energy sources is that they are <span class="blank" data-correct="weather-dependent" ondrop="drop(event)" ondragover="allowDrop(event)"></span>. 
+   
+   Wind energy can further cause <span class="blank" data-correct="noise pollution" ondrop="drop(event)" ondragover="allowDrop(event)"></span> . 
+   
+   One major risk associated with nuclear power is the disposal of <span class="blank" data-correct="nuclear waste" ondrop="drop(event)" ondragover="allowDrop(event)"></span>. 
+   
+   <span class="blank" data-correct="Iceland" ondrop="drop(event)" ondragover="allowDrop(event)"></span> generates 85% of its energy from geothermal and hydroelectric power.
+   
+   Unlike <span class="blank" data-correct="fossil fuels" ondrop="drop(event)" ondragover="allowDrop(event)"></span>, renewable energy sources are sustainable and produce little to no emissions. 
+   
+ Countries must balance economic, <span class="blank" data-correct="environmental" ondrop="drop(event)" ondragover="allowDrop(event)"></span>, and social considerations when choosing energy sources. 
+ 
+ Non-renewable energy sources, such as coal, <span class="blank" data-correct="Oil" ondrop="drop(event)" ondragover="allowDrop(event)"></span>, and natural gas, have a finite supply.
+
+
+
+
+
+
+
+
+
+    <button id = "big-button" onclick="submitQuiz('quiz')">Submit</button>
+    <p class="score" id="score"></p>   </section>
+    <div class="overlay" id="overlay"></div>
+   
+    <div class="score-modal" id="scoreModal">
+        <h2>Quiz Results</h2>
+        <p id="scoreText"></p>
+        
+    </div>
+    </section>
+<script>
+    function allowDrop(event) {
+        event.preventDefault();
+    }
+    
+    function dragStart(event) {
+        event.dataTransfer.setData("text", event.target.dataset.answer);
+    }
+    
+    function drop(event) {
+        event.preventDefault();
+        const answer = event.dataTransfer.getData("text");
+        if (event.target.classList.contains("blank") && !event.target.classList.contains("dropped")) {
+            event.target.textContent = answer;
+            event.target.classList.add("dropped");
+            event.target.dataset.answer = answer;
+        }
+    }
+    
+    // Enable users to clear their answer by clicking on the blank space
+    function clearAnswer(event) {
+        if (event.target.classList.contains("blank") && event.target.classList.contains("dropped")) {
+            event.target.textContent = "";
+            event.target.classList.remove("dropped");
+            delete event.target.dataset.answer;
+        }
+    }
+    
+    document.querySelectorAll(".blank").forEach(blank => {
+        blank.addEventListener("click", clearAnswer);
+    });
+    
+    function submitQuiz() {
+        const blanks = document.querySelectorAll(".blank");
+        let score = 0;
+        blanks.forEach(blank => {
+            if (blank.dataset.answer === blank.dataset.correct) {
+                score++;
+                blank.style.backgroundColor = "lightgreen";
+            } else {
+                blank.style.backgroundColor = "lightcoral";
+                blank.textContent = blank.dataset.correct; // Show missed answers
+            }
+        });
+        document.getElementById("scoreText").textContent = `Your score is ${score} out of ${blanks.length}`;
+        document.getElementById("overlay").classList.add("show");
+        document.getElementById("scoreModal").classList.add("show");
+    }
+    
+    function closeModal() {
+        document.getElementById("overlay").classList.remove("show");
+        document.getElementById("scoreModal").classList.remove("show");
+    }
+    
+    document.querySelectorAll(".draggable").forEach(item => {
+        item.addEventListener("dragstart", dragStart);
+    });
+
+</script>
+    </body>
+</html>
+<footer>
+    <p><strong>For online support call/whatsapp +234-703-463-258-9/send an email to gametheory242@gmail.com </strong> </p>
+</footer>
+
