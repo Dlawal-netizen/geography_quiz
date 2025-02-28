@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourism Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color:#f9f9f9;
+        }
+        header {
+            background: #4CAF50;
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+
+
+        a {
+            font-size: 1.5em; /* Makes the link words bigger */
+            color: #FF5733; /* Initial link color */
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+         a:hover {
+            color: #3375FF; /* Changes the color when hovered */
+            transform: scale(1.1); /* Adds a zoom-in effect */
+        }
+  
+        .answers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .draggable {
+            background: #4CAF50;
+            color: white;
+            padding: 0.5rem;
+            text-align: center;
+            border-radius: 4px;
+            cursor: grab;
+        }
+        .quiz {
+            margin-top: 2rem;
+        }
+        .quiz .question {
+            margin-bottom: 1rem;
+        }
+        .blank {
+            display: inline-block;
+            width: 150px;
+            height: 30px;
+            margin-left: 5px;
+            border: 1px dashed #333;
+            text-align: center;
+            line-height: 30px;
+            background: #f9f9f9;
+        }
+        .blank.dropped {
+            background: #e0f7fa;
+        }
+        footer {
+            text-align: center;
+            background: #333;
+            color: white;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .score {
+            font-size: 1.2rem;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        
+/* Add this CSS for the 'used' class */
+.draggable.used {
+    cursor: not-allowed;
+    background-color: #cccccc;
+    color: #666666;
+    pointer-events: none; /* Prevent interaction */
+    opacity: 0.5;
+}
+#big-button {
+    background-color: #cccccc; /* Light gray background */
+    color: #333; /* Dark text for contrast */
+    font-size: 1rem; /* Slightly smaller font size */
+    font-weight: bold; /* Bold text */
+    padding: 0.5rem 1rem; /* Reduced padding */
+    border: 2px solid #4CAF50; /* Green border */
+    border-radius: 20px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+#big-button:hover {
+    background-color: #bec2be; /* Darker green on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+}
+
+#big-button:active {
+    background-color: #9edba0; /* Even darker green on click */
+    transform: translateY(0); /* Reset lift on click */
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2); /* Reduced shadow */
+}
+
+</style>
+
+    
+</head>
+<body>
+    <header>
+        <h1>Quiz on Tourism</h1>
+        <a href="tourism.html">Read notes</a>
+    </header>
+
+        
+        <p>Drag the correct answers from the box and drop them into the blanks in each question. Click "Submit" to see your score.</p>
+
+        <!-- Answer grid -->
+        <div class="answers-grid" id="answers-grid">
+            <div class="draggable" draggable="true" data-answer="national parks">national parks</div>
+            <div class="draggable" draggable="true" data-answer="Cultural diversity">Cultural diversity</div>
+            <div class="draggable" draggable="true" data-answer="increased revenue">increased revenue </div> 
+            <div class="draggable" draggable="true" data-answer="eco-friendly accommodations">eco-friendly accommodations</div>
+            <div class="draggable" draggable="true" data-answer="air pollution">air pollution</div>
+            <div class="draggable" draggable="true" data-answer="deforestation">deforestation</div>
+            <div class="draggable" draggable="true" data-answer="financially">financially</div>
+            <div class="draggable" draggable="true" data-answer="renewable energy">renewable energy</div>
+            <div class="draggable" draggable="true" data-answer="infrastructural upgrade">infrastructural upgrade</div>
+            <div class="draggable" draggable="true" data-answer="cultural erosion">Monitoring</div>
+            <div class="draggable" draggable="true" data-answer="Tourism">Tourism</div>
+            <div class="draggable" draggable="true" data-answer="job insecurity">job insecurity</div>
+            <div class="draggable" draggable="true" data-answer="improved transport">improved transport</div>
+            <div class="draggable" draggable="true" data-answer="host">hosts</div>
+            <div class="draggable" draggable="true" data-answer="regulations">regulations</div>
+            <div class="draggable" draggable="true" data-answer="Mass Tourism">Mass Tourism</div>
+            <div class="draggable" draggable="true" data-answer="littering">littering</div>
+            <div class="draggable" draggable="true" data-answer="walk">walk</div>
+            <div class="draggable" draggable="true" data-answer="employment opportunities">employment opportunities</div>
+            <div class="draggable" draggable="true" data-answer="mountaineering">mountaineering</div>
+            <div class="draggable" draggable="true" data-answer="disposable income">disposable income</div>
+            
+        </div>
+
+        <!-- Quiz questions -->
+                    <!-- Quiz questions -->
+                    <div class="quiz">
+                        <div class="question">
+                            
+                        
+                            
+                            <span class="blank" data-correct="Tourism" ondrop="drop(event)" ondragover="allowDrop(event)"></span> refers to the activities of people traveling to and staying in places outside their usual environment for more than 24 hours but less than a year. 
+                                            
+                            One key factor encouraging the growth of tourism is <span class="blank" data-correct="improved transport" ondrop="drop(event)" ondragover="allowDrop(event)"></span>, which has made travel faster and more affordable. 
+                            
+                            Increased <span class="blank" data-correct="disposable income" ondrop="drop(event)" ondragover="allowDrop(event)"></span> allows more people to afford holidays and travel. 
+                            
+                            <span class="blank" data-correct="Mass Tourism" ondrop="drop(event)" ondragover="allowDrop(event)"></span> involves large numbers of people visiting a destination at the same time. 
+                            
+                            Adventure tourism includes activities such as trekking, rafting, and <span class="blank" data-correct="mountaineering" ondrop="drop(event)" ondragover="allowDrop(event)"></span>.Medical tourism involves traveling for healthcare and medical treatment.
+
+                            A tourist area or resort is analyzed based on its reasons for growth, impacts of tourism, and management strategies. One positive economic impact of tourism is that it creates <span class="blank" data-correct="employment opportunities" ondrop="drop(event)" ondragover="allowDrop(event)"></span> which help many locals to be able to pay rents, school fess and meets other obligations. 
+                            
+                            <span class="blank" data-correct="Cultural diversity" ondrop="drop(event)" ondragover="allowDrop(event)"></span> can be another benefit as more tourists blend with locals.
+                            
+                            Seasonal employment in tourism can lead to <span class="blank" data-correct="job insecurity" ondrop="drop(event)" ondragover="allowDrop(event)"></span>. Tourism can encourage the establishment of <span class="blank" data-correct="national parks" ondrop="drop(event)" ondragover="allowDrop(event)"></span> for conservation. 
+                            
+                            Negative environmental impacts of tourism include:- <span class="blank" data-correct="air pollution" ondrop="drop(event)" ondragover="allowDrop(event)"></span> from transport as more vehicles are either carrying tourists or goods made for tourists
+                            
+                            another is <span class="blank" data-correct="littering" ondrop="drop(event)" ondragover="allowDrop(event)"></span> as many drop thier waste anywhere without using proper disposable bin.
+                            
+                            <span class="blank" data-correct="deforestation" ondrop="drop(event)" ondragover="allowDrop(event)"></span> is another environmental effects as forest is cleared to build hotels, parks and other necessary facilities.
+                            
+                            Tourism can also leads to <span class="blank" data-correct="cultural erosion" ondrop="drop(event)" ondragover="allowDrop(event)"></span> and the loss of traditions in local communities, as tourists have a way of making thier ideas and practices overwhelm that of their <span class="blank" data-correct="host" ondrop="drop(event)" ondragover="allowDrop(event)"></span> 
+                            
+                            while <span class="blank" data-correct="infrastructural upgrade" ondrop="drop(event)" ondragover="allowDrop(event)"></span> on other hand will occur as 
+                            
+                            government spend thier <span class="blank" data-correct="increased revenue" ondrop="drop(event)" ondragover="allowDrop(event)"></span> as a result of more tourists paying VAT and other services paying taxes to provide roads, schools electricity etc.
+                            
+                            Sustainable tourism strategies include <span class="blank" data-correct="eco-friendly accommodations" ondrop="drop(event)" ondragover="allowDrop(event)"></span>, such as hotels using <span class="blank" data-correct="renewable energy" ondrop="drop(event)" ondragover="allowDrop(event)"></span>. 
+                            
+                            toursits are encourage to <span class="blank" data-correct="walk" ondrop="drop(event)" ondragover="allowDrop(event)"></span> and bike more often. 
+                        
+                            Local community involvement ensures that residents benefit <span class="blank" data-correct="financially" ondrop="drop(event)" ondragover="allowDrop(event)"></span> and culturally from tourism. 
+                            
+                            Governments play a role in managing tourism by setting <span class="blank" data-correct="regulations" ondrop="drop(event)" ondragover="allowDrop(event)"></span>, investing in infrastructure, and promoting destinations. 
+                            
+                            The UNESCO and WTO promote heritage conservation and sustainable tourism. One future trend in tourism is space tourism, where travelers explore space commercially. Post-pandemic, there has been a growth in domestic tourism due to a preference for local travel. 
+                            
+                            The rising demand for eco tourism and carbon-neutral trips reflects a shift toward responsible travel.</div>
+
+                    <!-- Additional Quiz Section with Images and Graphs -->
+
+                    <button id = "big-button" onclick="submitQuiz('quiz')">Submit</button>
+                    <p class="score" id="score"></p>   </section>
+                    <div class="overlay" id="overlay"></div>
+                   
+                    <div class="score-modal" id="scoreModal">
+                        <h2>Quiz Results</h2>
+                        <p id="scoreText"></p>
+                       
+                    </div>
+                    </section>
+                    
+                    <script>
+                        function allowDrop(event) {
+                            event.preventDefault();
+                        }
+                        
+                        function dragStart(event) {
+                            event.dataTransfer.setData("text", event.target.dataset.answer);
+                        }
+                        
+                        function drop(event) {
+                            event.preventDefault();
+                            const answer = event.dataTransfer.getData("text");
+                            if (event.target.classList.contains("blank") && !event.target.classList.contains("dropped")) {
+                                event.target.textContent = answer;
+                                event.target.classList.add("dropped");
+                                event.target.dataset.answer = answer;
+                            }
+                        }
+                        
+                        // Enable users to clear their answer by clicking on the blank space
+                        function clearAnswer(event) {
+                            if (event.target.classList.contains("blank") && event.target.classList.contains("dropped")) {
+                                event.target.textContent = "";
+                                event.target.classList.remove("dropped");
+                                delete event.target.dataset.answer;
+                            }
+                        }
+                        
+                        document.querySelectorAll(".blank").forEach(blank => {
+                            blank.addEventListener("click", clearAnswer);
+                        });
+                        
+                        function submitQuiz() {
+                            const blanks = document.querySelectorAll(".blank");
+                            let score = 0;
+                            blanks.forEach(blank => {
+                                if (blank.dataset.answer === blank.dataset.correct) {
+                                    score++;
+                                    blank.style.backgroundColor = "lightgreen";
+                                } else {
+                                    blank.style.backgroundColor = "lightcoral";
+                                    blank.textContent = blank.dataset.correct; // Show missed answers
+                                }
+                            });
+                            document.getElementById("scoreText").textContent = `Your score is ${score} out of ${blanks.length}`;
+                            document.getElementById("overlay").classList.add("show");
+                            document.getElementById("scoreModal").classList.add("show");
+                        }
+                        
+                        function closeModal() {
+                            document.getElementById("overlay").classList.remove("show");
+                            document.getElementById("scoreModal").classList.remove("show");
+                        }
+                        
+                        document.querySelectorAll(".draggable").forEach(item => {
+                            item.addEventListener("dragstart", dragStart);
+                        });
+                    
+                    </script>
+                                                                        
+                </body>
+</html>                
+<footer>
+    <p><strong> For online support call /whatsapp: +234-703-463-258-9/send an email to gametheory242@gmail.com </strong></p>
+</footer>
