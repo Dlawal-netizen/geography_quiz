@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Environmental risk of Economic development  Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color:#f9f9f9;
+        }
+        header {
+            background: #4CAF50;
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+
+
+        a {
+            font-size: 1.5em; /* Makes the link words bigger */
+            color: #FF5733; /* Initial link color */
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+         a:hover {
+            color: #3375FF; /* Changes the color when hovered */
+            transform: scale(1.1); /* Adds a zoom-in effect */
+        }
+  
+        .answers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .draggable {
+            padding: 10px;
+            margin: 5px;
+            background-color: lightblue;
+            cursor: grab;
+            display: inline-block;
+            border-radius: 5px;
+            text-align: center;
+            min-width: 120px;
+        }
+
+ .quiz {
+            margin-top: 2rem;
+        }
+        .quiz .question {
+            margin-bottom: 1rem;
+        }
+        .blank {
+            display: inline-block;
+            width: 150px;
+            height: 30px;
+            margin-left: 5px;
+            border: 1px dashed #333;
+            text-align: center;
+            line-height: 30px;
+            background: #f9f9f9;
+        }
+        .blank.dropped {
+            background: #e0f7fa;
+        }
+        footer {
+            text-align: center;
+            background: #333;
+            color: white;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .score {
+            font-size: 1.2rem;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        
+/* Add this CSS for the 'used' class */
+.draggable.used {
+    cursor: not-allowed;
+    background-color: #cccccc;
+    color: #666666;
+    pointer-events: none; /* Prevent interaction */
+    opacity: 0.5;
+}
+#big-button {
+    background-color: #cccccc; /* Light gray background */
+    color: #333; /* Dark text for contrast */
+    font-size: 1rem; /* Slightly smaller font size */
+    font-weight: bold; /* Bold text */
+    padding: 0.5rem 1rem; /* Reduced padding */
+    border: 2px solid #4CAF50; /* Green border */
+    border-radius: 20px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+#big-button:hover {
+    background-color: #bec2be; /* Darker green on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+}
+
+#big-button:active {
+    background-color: #9edba0; /* Even darker green on click */
+    transform: translateY(0); /* Reset lift on click */
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2); /* Reduced shadow */
+}
+
+</style>
+</head>
+<body>
+    <header>
+        <h1>Quiz on Environmental risks of economic development</h1>
+    <a href="environmental risk of economic development.html">Read notes</a>
+ </header>    
+    <h2>Drag and Drop Quiz</h2>
+    <p><strong> Drag the correct answers into the blanks below and click submit to view your score.</strong></p>
+    
+    <div id="answers">
+        <span class="draggable" draggable="true"  data-answer="Sustainable development">Sustainable development</span>
+        <span class="draggable" draggable="true" data-answer="Desertification">Desertification</span>
+        <span class="draggable" draggable="true"  data-answer="Industrialization" >Industrialization</span>
+        <span class="draggable" draggable="true"  data-answer="Conservation">Conservation</span>
+        <span class="draggable" draggable="true"  data-answer="Amazon Rainforest">Amazon Rainforest</span>
+        <span class="draggable" draggable="true"  data-answer="Global warming">Global warming</span>
+        <span class="draggable" draggable="true"  data-answer="Renewable energy">Renewable energy</span>
+        <span class="draggable" draggable="true" data-answer="Biodiversity" >Biodiversity</span>
+        <span class="draggable" draggable="true"  data-answer="Deforestation">Deforestation</span>
+        <span class="draggable" draggable="true"  data-answer="Noise pollution" >Noise pollution</span>
+        <span class="draggable" draggable="true"  data-answer="Air pollution">Air pollution</span>
+        <span class="draggable" draggable="true"  data-answer="Visual pollution" >Visual pollution</span>
+        <span class="draggable" draggable="true"  data-answer="Recycling">Recycling</span>
+        <span class="draggable" draggable="true"  data-answer="Overgrazing">Overgrazing</span>
+          <span class="draggable" draggable="true" data-answer="Greenhouse gases" >Greenhouse gases</span>
+        <span class="draggable" draggable="true" data-answer="Soil erosion">Soil erosion</span>
+        <span class="draggable" draggable="true" data-answer="Water pollution">Water pollution</span>
+        <span class="draggable" draggable="true"  data-answer="Reforestation">Reforestation</span>
+         <span class="draggable" draggable="true"  data-answer="Carbon dioxide">Carbon dioxide</span>
+         <span class="draggable" draggable="true"  data-answer="Acid rain">Acid rain</span>
+    </div>
+
+    <div class="container">
+        <span class="blank" data-correct="Soil erosion" ondrop="drop(event)" ondragover="allowDrop(event)"></span> occurs when trees are removed, leading to the loss of fertile land and siltation of rivers.
+        
+        <span class="blank" data-correct="Desertification" ondrop="drop(event)" ondragover="allowDrop(event)"></span> is the process where productive land turns into desert due to deforestation and poor land management.
+        
+        The release of <span class="blank" data-correct="Greenhouse gases" ondrop="drop(event)" ondragover="allowDrop(event)"></span> into the atmosphere leads to rising temperatures and climate change.
+        
+        <span class="blank" data-correct="Water pollution" ondrop="drop(event)" ondragover="allowDrop(event)"></span> is caused by industrial waste, oil spills, and agricultural chemicals, harming aquatic life.
+        
+        The expansion of cities and factories due to <span class="blank" data-correct="Industrialization" ondrop="drop(event)" ondragover="allowDrop(event)"></span> leads to environmental degradation.
+        
+        Protecting different species and maintaining <span class="blank" data-correct="Biodiversity" ondrop="drop(event)" ondragover="allowDrop(event)"></span> is crucial for a balanced ecosystem.
+        
+        <span class="blank" data-correct="Sustainable development" ondrop="drop(event)" ondragover="allowDrop(event)"></span> ensures that economic growth does not compromise natural resources for future generations.
+        
+        Loud sounds from traffic, industries, and urbanization contribute to <span class="blank" data-correct="Noise pollution" ondrop="drop(event)" ondragover="allowDrop(event)"></span>, affecting human health.
+        
+        Vehicle emissions and burning fossil fuels contribute to <span class="blank" data-correct="Air pollution" ondrop="drop(event)" ondragover="allowDrop(event)"></span>, which causes respiratory diseases.
+        
+        Billboards, waste dumps, and power lines contribute to <span class="blank" data-correct="Visual pollution" ondrop="drop(event)" ondragover="allowDrop(event)"></span>, reducing the beauty of landscapes.
+        
+        One way to conserve natural resources is through <span class="blank" data-correct="Recycling" ondrop="drop(event)" ondragover="allowDrop(event)"></span>, which reduces waste by using materials again.
+        
+        Excessive livestock feeding on vegetation is known as <span class="blank" data-correct="Overgrazing" ondrop="drop(event)" ondragover="allowDrop(event)"></span>, which leads to land degradation.
+        
+        Using <span class="blank" data-correct="Renewable energy" ondrop="drop(event)" ondragover="allowDrop(event)"></span> like solar and wind power helps reduce dependence on fossil fuels.
+        
+        Planting trees through <span class="blank" data-correct="Reforestation" ondrop="drop(event)" ondragover="allowDrop(event)"></span> programs helps restore deforested areas and improve the environment.
+        
+        <span class="blank" data-correct="Global warming" ondrop="drop(event)" ondragover="allowDrop(event)"></span> is the long-term increase in Earth's temperature due to excessive greenhouse gas emissions.
+        
+        The <span class="blank" data-correct="Amazon Rainforest" ondrop="drop(event)" ondragover="allowDrop(event)"></span> in South America is experiencing massive tree loss due to logging and farming activities.
+        
+        Cutting down trees at an excessive rate is known as <span class="blank" data-correct="Deforestation" ondrop="drop(event)" ondragover="allowDrop(event)"></span>, which threatens ecosystems and wildlife.
+        
+        Factories and cars release <span class="blank" data-correct="Carbon dioxide" ondrop="drop(event)" ondragover="allowDrop(event)"></span>, a gas that contributes significantly to climate change.
+        
+        The practice of <span class="blank" data-correct="Conservation" ondrop="drop(event)" ondragover="allowDrop(event)"></span> helps protect natural resources by reducing their depletion.
+        
+        When toxic chemicals from industries mix with rain, it results in <span class="blank" data-correct="Acid rain" ondrop="drop(event)" ondragover="allowDrop(event)"></span>, which damages soil and water bodies.
+    </div>
+
+
+
+    <button id = "big-button" onclick="submitQuiz('quiz')">Submit</button>
+    <p class="score" id="score"></p>   </section>
+    <div class="overlay" id="overlay"></div>
+   
+    <div class="score-modal" id="scoreModal">
+        <h2>Quiz Results</h2>
+        <p id="scoreText"></p>
+       
+    </div>
+    </section>
+    
+    <script>
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+        
+        function dragStart(event) {
+            event.dataTransfer.setData("text", event.target.dataset.answer);
+        }
+        
+        function drop(event) {
+            event.preventDefault();
+            const answer = event.dataTransfer.getData("text");
+            if (event.target.classList.contains("blank") && !event.target.classList.contains("dropped")) {
+                event.target.textContent = answer;
+                event.target.classList.add("dropped");
+                event.target.dataset.answer = answer;
+            }
+        }
+        
+        // Enable users to clear their answer by clicking on the blank space
+        function clearAnswer(event) {
+            if (event.target.classList.contains("blank") && event.target.classList.contains("dropped")) {
+                event.target.textContent = "";
+                event.target.classList.remove("dropped");
+                delete event.target.dataset.answer;
+            }
+        }
+        
+        document.querySelectorAll(".blank").forEach(blank => {
+            blank.addEventListener("click", clearAnswer);
+        });
+        
+        function submitQuiz() {
+            const blanks = document.querySelectorAll(".blank");
+            let score = 0;
+            blanks.forEach(blank => {
+                if (blank.dataset.answer === blank.dataset.correct) {
+                    score++;
+                    blank.style.backgroundColor = "lightgreen";
+                } else {
+                    blank.style.backgroundColor = "lightcoral";
+                    blank.textContent = blank.dataset.correct; // Show missed answers
+                }
+            });
+            document.getElementById("scoreText").textContent = `Your score is ${score} out of ${blanks.length}`;
+            document.getElementById("overlay").classList.add("show");
+            document.getElementById("scoreModal").classList.add("show");
+        }
+        
+        function closeModal() {
+            document.getElementById("overlay").classList.remove("show");
+            document.getElementById("scoreModal").classList.remove("show");
+        }
+        
+        document.querySelectorAll(".draggable").forEach(item => {
+            item.addEventListener("dragstart", dragStart);
+        });
+    
+    </script>
+
+
+
+
+
+</body>
+<footer><strong> For Online support: Call/ whatsapp +234-703-463-258-9/ Send an email to gametheory242@gmail.com </strong></footer>
+</html>
